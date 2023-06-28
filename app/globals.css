@@ -6,6 +6,7 @@
   :root {
     --background: 216 68% 11%;
     --foreground: 0 0% 100%
+    --variablenueva: 0 40% 100%
 
  
     --muted: 210 40% 96.1%;
@@ -77,27 +78,4 @@
     @apply bg-background text-foreground;
   }
 }
-.contenedor{
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: "sidebar header header"
-                       "sidebar main main"
-                       "sidebar footer footer";
-}
-.sidebar{
-  grid-area: sidebar;
- 
-}
-.header{
-  grid-area: header;
 
-}
-.main{
-  grid-area: main;
-
-}
-.footer{
-  grid-area: footer;
-
-}

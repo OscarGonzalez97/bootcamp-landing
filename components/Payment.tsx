@@ -22,6 +22,7 @@ import {
 } from "./ui/select"
 import { InputCoso } from '@/components/Input'
 import { ButtonDemo } from '@/components/Button'
+import Link from "next/link"
 
 
 export  default function Payment() {
@@ -113,7 +114,7 @@ export  default function Payment() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start">
-        <Button variant="default">Save</Button>
+        <Button variant="link" className="bg-variablenueva"><Link href={'/accordion'}>Op</Link></Button>
       </CardFooter>
     </Card>
   )
