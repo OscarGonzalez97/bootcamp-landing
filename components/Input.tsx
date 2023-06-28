@@ -7,5 +7,5 @@ interface InputCosoProps {
 }
 
 export function InputCoso({ type, placeholder }: InputCosoProps) {
-  return <Input type={type} placeholder={placeholder}  className=' bg-red-800'/>;
+  return <Input type={type} placeholder={placeholder}  />;
 }

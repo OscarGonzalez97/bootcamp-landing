@@ -4,9 +4,9 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --foreground-x: 120.2 84% 4.9%;
+    --background: 216 68% 11%;
+    --foreground: 0 0% 100%
+
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -14,19 +14,19 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --card: 0 0% 100%;
+    --card:240 7% 97%;
     --card-foreground: 222.2 84% 4.9%;
  
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
  
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 204 54% 78%;
     --primary-foreground: 210 40% 98%;
  
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 7% 97%;
+    --secondary-foreground: 216 65% 31%;
  
-    --accent: 210 40% 96.1%;
+    --accent: 38 100% 50%;
     --accent-foreground: 222.2 47.4% 11.2%;
  
     --destructive: 0 84.2% 60.2%;

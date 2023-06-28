@@ -113,9 +113,7 @@ export  default function Payment() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start">
-        <Button className="w-full">Continue</Button>
-        <ButtonDemo  />
-        <InputCoso type='text' placeholder='hola' />
+        <Button variant="default">Save</Button>
       </CardFooter>
     </Card>
   )
