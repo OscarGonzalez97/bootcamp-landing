@@ -27,7 +27,17 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 export function Cards() {
   const textMotion = {
     hover: {
-      x: 30,
+      x: 20,
+      transition: {
+        duration: 0.2,
+        type: "tween",
+        ease: "easeOut"
+      }
+    }
+  };
+  const textMotion2 = {
+    hover: {
+      color: 'orangered',
       transition: {
         duration: 0.2,
         type: "tween",
@@ -37,6 +47,7 @@ export function Cards() {
   };
   const lineMotion = {
     hover: {
+      stroke: 'orangered',
       strokeDashoffset: 0,
       transition: {
         duration: 1
@@ -68,6 +79,7 @@ export function Cards() {
                 whileHover="hover"
                 whileTap="hover"
                 className="flex"
+                variants={textMotion2}
               >
                 <Link href={''} className="flex">
                   <span className="">
