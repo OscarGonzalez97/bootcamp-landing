@@ -4,7 +4,9 @@ const nextConfig = {
         domains: [
             "images.unsplash.com",
             "brandslogos.com",
-            "www.freepnglogos.com"
+            "www.freepnglogos.com",
+            "res.cloudinary.com"
+
         ],
     }
 }
