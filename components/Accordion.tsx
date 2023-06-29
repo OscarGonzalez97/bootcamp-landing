@@ -7,21 +7,21 @@ import {
 
 export function AccordionDemo() {
   return (
-    <Accordion type="single" collapsible className="w-9/12 flex flex-col gap-4">
-      <AccordionItem value="item-1" className="bg-secondary rounded-lg p-2">
+    <Accordion type="single" collapsible className="w-full flex text-primary text-background flex-col gap-4">
+      <AccordionItem value="item-1" className="bg-secondary rounded-lg pl-2">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
         <AccordionContent>
           Yes. It adheres to the WAI-ARIA design pattern.
         </AccordionContent>
       </AccordionItem >
-      <AccordionItem value="item-2" className="bg-secondary rounded-lg p-2">
+      <AccordionItem value="item-2" className="bg-secondary rounded-lg pl-2">
         <AccordionTrigger>Is it styled?</AccordionTrigger>
         <AccordionContent>
           Yes. It comes with default styles that matches the other
           components&apos; aesthetic.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-3" className="bg-secondary rounded-lg p-2">
+      <AccordionItem value="item-3" className="bg-secondary rounded-lg pl-2">
         <AccordionTrigger>Is it animated?</AccordionTrigger>
         
         <AccordionContent>
