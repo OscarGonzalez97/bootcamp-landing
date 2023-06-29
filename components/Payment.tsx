@@ -114,7 +114,7 @@ export  default function Payment() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start">
-        <Button variant="link" className="bg-variablenueva"><Link href={'/accordion'}>Op</Link></Button>
+        <Button variant="ghost" className="bg-variablenueva"><Link href={'/accordion'}>Op</Link></Button>
       </CardFooter>
     </Card>
   )
