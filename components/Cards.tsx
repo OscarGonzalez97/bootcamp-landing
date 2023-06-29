@@ -69,7 +69,7 @@ export function Cards() {
           <Card key={index} className="h-96">
             <CardHeader>
               <div className="flex justify-start items-center text-2xl">
-                <FontAwesomeIcon icon={item.icon} style={{ color: item.color }} className="me-2" />
+                <FontAwesomeIcon icon={item.icon} style={{ color: item.color }} className="me-2 w-6" />
                 <CardTitle>{item.title}</CardTitle>
               </div>
             </CardHeader>
