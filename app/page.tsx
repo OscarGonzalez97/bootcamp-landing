@@ -1,10 +1,12 @@
 "use client"
-import Nav from "@/components/Navbar";
+
+import Payment from "@/components/Payment";
+
 
 export default function Home() {
   return (
     <main>
-      <Nav/>
+     <Payment/> <Payment/> <Payment/>
     </main>
   );
 }
