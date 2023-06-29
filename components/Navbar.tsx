@@ -27,13 +27,13 @@ export default function Nav() {
         </div>
         <nav className='hidden sm:flex'>
           <div className='text-2xl hover:text-slate-400 cursor-pointer flex items-center text-white font-[Arial]'>
-            Bootcamps Realizados
+            <a href="bootcamps-realizados">Bootcamps Realizados</a> 
           </div>
         </nav>
       </div>
       <nav className={isOpen ? 'block' : 'hidden'}>
         <div className='text-2xl hover:text-slate-400 cursor-pointer flex items-center text-white font-[Arial]'>
-          Bootcamps Realizados
+          <a href="bootcamps-realizados">Bootcamps Realizados</a> 
         </div>
       </nav>
     </header>
