@@ -5,8 +5,8 @@ const nextConfig = {
             "images.unsplash.com",
             "brandslogos.com",
             "www.freepnglogos.com",
-            "res.cloudinary.com"
-
+            "res.cloudinary.com",
+            "rickandmortyapi.com"
         ],
     }
 }
