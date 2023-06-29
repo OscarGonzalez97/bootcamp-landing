@@ -1,6 +1,6 @@
 
-import { AtSign, Bell, BellOff } from "lucide-react"
-
+import { AtSign, Bell, BellOff, FileAudio2 } from "lucide-react"
+import Image from "next/image"
 import {
   Card,
   CardContent,
@@ -21,6 +21,8 @@ export function DemoNotifications() {
       <CardContent className="grid gap-1">
         <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
           <Bell className="mt-px h-5 w-5" />
+          <FileAudio2 className="mt-px h-5 w-5" />
+            {/* <Image src={ } alt="" width={} height={}/> */}
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Everything</p>
             <p className="text-sm text-muted-foreground">
