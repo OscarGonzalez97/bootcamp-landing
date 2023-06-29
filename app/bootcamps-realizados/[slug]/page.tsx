@@ -10,8 +10,15 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 
+interface parametros {
+    params: {
+        slug: string
+    }
+}
 
-function page() {
+function page({ params }: parametros) {
+
+    console.log(params.slug)
 
     const bootcampDetail = {
         bootcamp: { title: "Bootcamp React", description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusantium maxime ex libero ratione distinctio minus excepturi error incidunt facere, a dolore, vitae, vero reprehenderit perferendis culpa sunt dolores odio.', date_from: '12/04/2023', date_to: '07/07/2023', image: 'https://images.unsplash.com/photo-1674574124649-778f9afc0e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' },
