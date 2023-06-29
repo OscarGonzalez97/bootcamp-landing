@@ -27,7 +27,7 @@ import Link from "next/link"
 
 export  default function Payment() {
   return (
-    <Card>
+    <Card className="w-[600px]">
       <CardHeader>
         <CardTitle>Payment Method</CardTitle>
         <CardDescription>

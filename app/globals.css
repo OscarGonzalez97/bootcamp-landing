@@ -78,4 +78,9 @@
     @apply bg-background text-foreground;
   }
 }
+.supermain{
+  display: grid;
+  gap: 1rem;
+  
+}
 
