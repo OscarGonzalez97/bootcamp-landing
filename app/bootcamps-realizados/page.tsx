@@ -15,7 +15,7 @@ function page() {
     ]
 
     return (
-        <div className='container grid gap-5 px-52'>
+        <div className='container grid gap-5 lg:px-52'>
             <h1 className="text-2xl sm:text-5xl font-bold text-foreground text-center mt-5">Bootcamps Realizados</h1>
             <hr className='border-accent'/>
             {listaBootcamps && listaBootcamps.map((item, index) => (
