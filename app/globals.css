@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: 216 68% 11%;
-    --foreground: 0 0% 100%
+    --foreground: 0 0% 100%;
 
  
     --muted: 210 40% 96.1%;
@@ -82,16 +82,3 @@
   gap: 1rem;
   
 }
-
-/* .cartacont{
-
-  display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-
-}
-
-.carta{
-  grid-row: span 3 ;
-  grid-template-rows: subgrid;
-} */
