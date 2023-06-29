@@ -1,25 +1,8 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+import {Card,CardContent,CardDescription,CardFooter,CardHeader,CardTitle} from "@/components/ui/card"
 import Image from 'next/image'
-
-import { Calendar } from "lucide-react"
+import { CalendarDays } from "lucide-react"
 
 
 
@@ -43,7 +26,8 @@ function page() {
                         </div>
                         <CardTitle className='text-3xl py-5 font-bold'>{item.title}</CardTitle>
                         <CardDescription className='flex items-center justify-center'>
-                            <Calendar /> {item.date_from} a {item.date_to}</CardDescription>
+                            <CalendarDays /> {item.date_from} a {item.date_to}</CardDescription>
+                            
                     </CardHeader>
                     <CardContent >
 
@@ -51,7 +35,7 @@ function page() {
 
                     </CardContent>
                     <CardFooter className='flex justify-center'>
-                        <Button className='bg-accent hover:bg-orange-500' >Ver más info</Button>
+                        <Button className='bg-accent text-background hover:bg-orange-500 hover:text-foreground' >Ver más info</Button>
                     </CardFooter>
                 </Card>
             ))}
