@@ -32,7 +32,9 @@ export default function Nav() {
         </nav>
       </div>
       <nav className={isOpen ? 'block' : 'hidden'}>
-        <a href="#" className="block px-2 py-1 text-white font-semibold  rounded hover:bg-gray-800">Bootcamps Realizados</a>
+        <div className='text-2xl hover:text-slate-400 cursor-pointer flex items-center text-white font-[Arial]'>
+          Bootcamps Realizados
+        </div>
       </nav>
     </header>
   )
