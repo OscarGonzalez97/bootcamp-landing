@@ -20,11 +20,11 @@ const Footer = () => {
                 <p>Código postal 1409</p>
                 <p>Asunción, Paraguay</p>
             </div>
-            <div className='footer-col-2 flex flex-col items-center gap-1 mb-4 mt-20'>
+            <div className='footer-col-2 flex flex-col items-center gap-1 mb-4 md:mt-3'>
                 <h2 className='text-2xl'>Contact</h2>
                 <p>+595 21 204 252</p>
                 <p>+595 21 214 884</p>
-                <div className="contacto flex flex-col items-center gap-2 my-4">
+                <div className="contacto flex flex-col items-center gap-2 my-4  ">
                         <Link className='flex hover:underline' href="mailto:info@roshka.com"><Mail/><p className='pl-2'>Send us an e-mail</p></Link>
                         <Link className='flex hover:underline' href="tel:59521204252"><Phone/><p className='pl-2'>Give us a call</p></Link>
                  
@@ -36,7 +36,7 @@ const Footer = () => {
                     <Link className='hover:text-primary' href="https://www.linkedin.com/company/roshka/" target='_blank'><Linkedin/></Link>
                 </div>    
             </div>
-            <div className='footer-col-3 flex flex-col items-center gap-1'>
+            <div className='footer-col-3 flex flex-col items-center gap-1 md:mt-3'>
                 <p><Link className='hover:underline' href="https://www.roshka.com/" target='_blank'>Home</Link></p>
                 <p><Link className='hover:underline' href="https://www.roshka.com/about/" target='_blank'>About Us</Link></p>
                 <p><Link className='hover:underline' href="https://www.roshka.com/jobs/" target='_blank'>Work with us</Link></p>
