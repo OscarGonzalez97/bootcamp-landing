@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 export default function Nav (){
-  const [showMobileOptions, setShowMobileOptions] = useState(false);
+  const [showMobileOptions, setShowMobileOptions] = useState(false)
 
   const handleToggleMobileOptions = () => {
-    setShowMobileOptions(!showMobileOptions);
-  };
+    setShowMobileOptions(!showMobileOptions)
+  }
 
   return (
     <div className='w-full fixed top-0 left-0'>
@@ -27,5 +27,5 @@ export default function Nav (){
         )}
       </div>
     </div>
-  );
-};
+  )
+}
