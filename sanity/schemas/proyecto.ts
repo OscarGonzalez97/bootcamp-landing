@@ -27,8 +27,8 @@ export default defineType({
 
     preview: {
         select: {
-        titulo: 'titulo',
-        descripcion: 'descripcion',
+        title: 'titulo',
+        subtitle: 'descripcion',
         },
     },
 })

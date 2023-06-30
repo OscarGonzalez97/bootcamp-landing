@@ -14,7 +14,7 @@ export default defineType({
 
     preview: {
         select: {
-            descripcion: 'descripcion',
+            title: 'descripcion',
         },
     },
 })
