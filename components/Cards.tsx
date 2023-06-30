@@ -20,7 +20,7 @@ import { Separator } from "./ui/separator";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAndroid, faJava, faReact, faJsSquare } from '@fortawesome/free-brands-svg-icons';
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
