@@ -8,8 +8,25 @@ import { Cards } from "@/components/Cards";
 import { DemoTeamMembers } from "@/components/TeamMember";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 
-export default function Home() {
+
+export default async function Home() {
+
+  const { data } = await client.query({
+    query: gql`
+    query{
+      allCurso{
+        _id
+        titulo
+      }
+    }
+    `,
+  });
+
+  console.log(data)
+
   return (
     <main className=" grid  place-items-center h-screen bg-background">
       
