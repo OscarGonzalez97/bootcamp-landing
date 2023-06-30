@@ -37,13 +37,13 @@ const CarouselPictures = (data : any ) => {
    
   if(reportData?.data != null){
     return (
-      <div className='w-11/12 '>
-        <Carousel  show={dimensions < 770 ?  1 : dimensions < 1385 ? 2 : 3} slide={dimensions < 770 ?  1 : dimensions < 1385 ? 2 : 3} swiping={true} infinite={true} responsive={true} dynamic={true} leftArrow={<ChevronLeft className='flex justify-center items-center h-[100%] text-secondary lg:w-[60px] sm:w-[40px] cursor-pointer hover:text-accent' strokeWidth={'1px'}/>} rightArrow={<ChevronRight className='flex justify-center items-center h-[100%] text-secondary lg:w-[60px] sm:w-[40px] cursor-pointer hover:text-accent' strokeWidth={'1px'}/>}>
+      <div className='w-[90%] m-0 p-0'>
+        <Carousel  className='m-0 p-0' show={dimensions < 770 ?  1 : dimensions < 1385 ? 2 : 3} slide={dimensions < 770 ?  1 : dimensions < 1385 ? 2 : 3} swiping={true} infinite={true} responsive={true} dynamic={true} leftArrow={<ChevronLeft className='flex justify-center items-center h-[100%] text-secondary lg:w-[60px] sm:w-[40px] cursor-pointer hover:text-accent' strokeWidth={'1px'}/>} rightArrow={<ChevronRight className='flex justify-center items-center h-[100%] text-secondary lg:w-[60px] sm:w-[40px] cursor-pointer hover:text-accent' strokeWidth={'1px'}/>}>
           {
             reportData.data.map((item : items , index : number) => {
               return (
-                <div key={index} className='w-full h-[300px]  relative xl:h-[400px] lg:h-[300px] md:h-[200px]'>
-                  <Image src={item.image} alt='' style={{objectFit:"cover"}} width={300} height={300}  className='px-5 '/>
+                <div key={index} className='w-full h-[300px] relative xl:h-[400px] lg:h-[300px] md:h-[200px]'>
+                  <Image src={item.image} alt='' style={{objectFit:"cover"}} fill className='px-3' sizes='10%'/>
                 </div>
               )    
             })

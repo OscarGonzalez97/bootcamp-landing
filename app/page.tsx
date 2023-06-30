@@ -34,7 +34,9 @@ export default function Home() {
    
       <Hero/>
       <Cards/>
-      <div className="w-screen"><CarouselPictures data={data}/></div>
+      <div className="w-screen bg-slate-500 flex justify-center items-center">        
+        <CarouselPictures data={data}/>
+      </div>
       <Footer/>
       
     </main>
