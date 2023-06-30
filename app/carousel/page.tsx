@@ -19,7 +19,9 @@ const page = () => {
   }, [])
     
   return (
-        <CarouselPictures data={data}/>
+    <div className="w-full flex justify-center items-center">        
+      <CarouselPictures data={data}/>
+    </div>
   )
 }
 

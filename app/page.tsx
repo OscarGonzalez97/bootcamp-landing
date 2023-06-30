@@ -29,14 +29,10 @@ export default function Home() {
     
 
   return (
-    <main className=" grid place-items-center h-screen bg-background">
-      
-   
+    <main className=" grid place-items-center h-screen bg-background"> 
       <Hero/>
       <Cards/>
-      <div className="w-screen bg-slate-500 flex justify-center items-center">        
-        <CarouselPictures data={data}/>
-      </div>
+      <CarouselPictures data={data}/>
       <Footer/>
       
     </main>
