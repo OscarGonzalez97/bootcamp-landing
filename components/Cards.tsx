@@ -20,7 +20,7 @@ import { Separator } from "./ui/separator";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAndroid, faJava, faReact, faJsSquare } from '@fortawesome/free-brands-svg-icons';
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -66,9 +66,7 @@ export function Cards() {
 
 
   return (
-    <div
-
-      className="grid place-items-center container px-20">
+    <div className="grid place-items-center container px-20 my-10">
       <div className="cartacont p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
         {bootcamps.map((item, index) => (
           <motion.div key={index} initial={{ x: '100vh', opacity: 0 }}
