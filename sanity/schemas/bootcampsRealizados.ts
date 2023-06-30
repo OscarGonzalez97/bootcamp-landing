@@ -35,5 +35,11 @@ export default defineType({
             type: 'array',
             of: [{type: 'reference', to: {type: 'proyecto'}}],
           }),
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'curso.titulo',
+            subtitle:'descripcion',
+        },
+    },
 })
