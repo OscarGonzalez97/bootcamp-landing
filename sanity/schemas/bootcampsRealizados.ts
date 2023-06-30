@@ -29,5 +29,11 @@ export default defineType({
                 hotspot: true
             }
         }),
+        defineField({
+            name: 'proyectos',
+            title: 'Proyectos',
+            type: 'array',
+            of: [{type: 'reference', to: {type: 'proyecto'}}],
+          }),
     ]
 })
