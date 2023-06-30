@@ -1,10 +1,25 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CarouselPictures from '@/components/Carousel'
+
 const page = () => {
+    const [data, setData] = useState(null)
+    useEffect(() => {
+      const fetchReportData = async () => {
+        try {
+          const response = await fetch("https://rickandmortyapi.com/api/character");
+          const data = await response.json();
+          setData(data.results);
+        } catch (error) {
+          console.error("Error fetching report data:", error);
+        }
+      };
+    
+      fetchReportData();
+    }, [])
   return (
     <div>
-      <CarouselPictures />
+      <CarouselPictures data={data}/>
     </div>
   )
 }
