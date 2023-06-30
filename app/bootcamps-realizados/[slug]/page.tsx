@@ -24,7 +24,7 @@ const Page = ({ params }: parametros) => {
     console.log(params.slug)
 
     const bootcampDetail = {
-        title: "Bootcamp React",
+        curso: { title: "Bootcamp React" },
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusantium maxime ex libero ratione distinctio minus excepturi error incidunt facere, a dolore, vitae, vero reprehenderit perferendis culpa sunt dolores odio.',
         date_from: '12/04/2023',
         date_to: '07/07/2023',
@@ -63,10 +63,10 @@ const Page = ({ params }: parametros) => {
                 {/* Detalle bootcamp */}
                 <div className='text-foreground grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 '>
                     <div className=''>
-                        <Image className='object-cover w-full h-auto object-top rounded-xl' src={bootcamp.image} alt={bootcamp.title} width={1000} height={1000}></Image>
+                        <Image className='object-cover w-full h-auto object-top rounded-xl' src={bootcamp.image} alt={bootcamp.curso.title} width={1000} height={1000}></Image>
                     </div>
                     <div>
-                        <h2 className="text-2xl sm:text-5xl font-bold text-foreground ">{bootcamp.title}</h2>
+                        <h2 className="text-2xl sm:text-5xl font-bold text-foreground ">{bootcamp.curso.title}</h2>
                         <hr className='my-5 border-accent' />
                         <p className='flex text-xl mb-10 items-center'>
                             <CalendarDays className='text-accent me-2' />
