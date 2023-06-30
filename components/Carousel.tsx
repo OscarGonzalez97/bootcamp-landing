@@ -47,7 +47,7 @@ useLayoutEffect(() => {
   
   if(reportData?.data != null){
         return (
-        <div className='w-[98vw] h-[500px] p-5'>
+        <div className='w-[98vw] p-5'>
         <swiper-container
             ref={swiperElRef}
             slides-per-view={dimensions < 770 ?  1 : dimensions < 1385 ? 2 : 3}
