@@ -8,7 +8,7 @@ interface items{
     image: string
   }
 
-const CarouselPictures = (data) => {
+const CarouselPictures = (data:any) => {
   const swiperElRef = useRef(null);
   const [dimensions, setDimensions] = useState(0);
   let reportData = data
