@@ -1,6 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import CarouselPictures from '@/components/Carousel'
+import Carousel from '@/components/Carousel'
+import Hero from '@/components/Hero'
+import {Cards} from '@/components/Cards'
+import Footer from '@/components/Footer'
 
 const page = () => {
     const [data, setData] = useState(null)
@@ -18,9 +21,12 @@ const page = () => {
       fetchReportData();
     }, [])
   return (
-    <div>
-      <CarouselPictures data={data}/>
-    </div>
+    <main className=" grid  place-items-center h-screen bg-background">
+    <Hero/>
+    <Cards/>
+    <Carousel data={data}/>
+    <Footer/>
+    </main>
   )
 }
 
