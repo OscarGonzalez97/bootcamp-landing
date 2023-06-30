@@ -15,6 +15,12 @@ export default defineType({
         title: 'Duración aprox.',
         type: 'number',
     }),
+    defineField({
+      name: 'contenidos',
+      title: 'Contenidos',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'contenido'}}],
+    }),
   ],
 
   preview: {
