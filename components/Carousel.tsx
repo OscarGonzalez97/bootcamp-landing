@@ -4,6 +4,15 @@ import { register } from 'swiper/element/bundle';
 
 register();
 
+declare global {
+  namespace JSX {
+      interface IntrinsicElements {
+          'swiper-container': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+          'swiper-slide': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      }
+  }
+}
+
 interface items{
     image: string
   }
@@ -24,12 +33,12 @@ useLayoutEffect(() => {
 
   if(swiperElRef.current){
       // listen for Swiper events using addEventListener
-      swiperElRef.current.addEventListener('progress', (e) => {
+      swiperElRef.current.addEventListener('progress', (e:any) => {
       const [swiper, progress] = e.detail;
       console.log(progress);
       });
   
-      swiperElRef.current.addEventListener('slidechange', (e) => {
+      swiperElRef.current.addEventListener('slidechange', (e:any) => {
       console.log('slide changed');
       });
   }
@@ -54,6 +63,7 @@ useLayoutEffect(() => {
             navigation="true"
             pagination="true"
             loop="true"
+            autoplay="true"
         >
            {
                 reportData.data.map((item : items , index : number) => {
