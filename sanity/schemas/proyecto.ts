@@ -18,10 +18,10 @@ export default defineType({
         defineField({
             name: 'imagen',
             title: 'Imagen',
-            type: 'image',
-            options: {
-                hotspot: true,
-            },
+            type: 'array',
+            of: [{type: 'image', options:{
+                hotspot: true
+            }}],
         }),
     ],
 
