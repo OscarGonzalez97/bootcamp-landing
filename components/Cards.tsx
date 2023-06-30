@@ -68,7 +68,7 @@ export function Cards() {
   return (
     <div
 
-      className="grid place-items-center container px-20">
+      className="grid place-items-center container px-12 md:px-20">
       <div className="cartacont p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
         {bootcamps.map((item, index) => (
           <motion.div key={index} initial={{ x: '100vh', opacity: 0 }}
