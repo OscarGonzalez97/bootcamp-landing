@@ -62,50 +62,59 @@ export function Cards() {
     { title: 'JavaScript', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faJsSquare, color: '#f7e51d' }
   ];
 
+  const offsetDelay = 0.2
+
+
   return (
-    <div className="w-[1250px] grid place-items-center container px-20">
+    <div
+
+      className="grid place-items-center container px-20">
       <div className="cartacont p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
         {bootcamps.map((item, index) => (
-          <Card key={index} className="h-96">
-            <CardHeader>
-              <div className="flex justify-start items-center text-2xl">
-                <FontAwesomeIcon icon={item.icon} style={{ color: item.color }} className="me-2" />
-                <CardTitle>{item.title}</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent className="text-sm text-justify opacity-60 h-4/5 flex flex-col justify-between">
-              <span>{item.description}</span>
-              <motion.div
-                whileHover="hover"
-                whileTap="hover"
-                className="flex"
-                variants={textMotion2}
-              >
-                <Link href={''} className="flex">
-                  <span className="">
-                    Ver Más
-                    <motion.svg xmlns="http://www.w3.org/2000/svg" width="60" height="1">
-                      <motion.line
-                        x1="0"
-                        y1="0"
-                        x2="100"
-                        y2="0"
-                        stroke="black"
-                        strokeWidth="20"
-                        initial={{ strokeDashoffset: 100, strokeDasharray: 100 }}
-                        variants={lineMotion}
-                      />
-                    </motion.svg>
-                  </span>
-                  <motion.div
-                    variants={textMotion}
-                  >
-                    <FontAwesomeIcon icon={faArrowRight} className="ms-2"/>
-                  </motion.div>
-                </Link>
-              </motion.div>
-            </CardContent>
-          </Card>
+          <motion.div key={index} initial={{ x: '100vh', opacity: 0 }}
+            animate={{ x: '0', opacity: 1 }}
+            transition={{ duration: 0.8, delay: offsetDelay * index }}>
+            <Card key={index} className="h-auto md:h-96">
+              <CardHeader>
+                <div className="flex justify-start items-center text-2xl">
+                  <FontAwesomeIcon icon={item.icon} style={{ color: item.color }} className="me-2 w-6 " />
+                  <CardTitle className="text-xl">{item.title}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="text-sm text-justify opacity-60 h-4/5 flex flex-col justify-between">
+                <span className="pb-10 md:mb-0">{item.description}</span>
+                <motion.div
+                  whileHover="hover"
+                  whileTap="hover"
+                  className="flex"
+                  variants={textMotion2}
+                >
+                  <Link href={''} className="flex">
+                    <span >
+                      Ver Más
+                      <motion.svg xmlns="http://www.w3.org/2000/svg" width="60" height="1">
+                        <motion.line
+                          x1="0"
+                          y1="0"
+                          x2="100"
+                          y2="0"
+                          stroke="black"
+                          strokeWidth="20"
+                          initial={{ strokeDashoffset: 100, strokeDasharray: 100 }}
+                          variants={lineMotion}
+                        />
+                      </motion.svg>
+                    </span>
+                    <motion.div
+                      variants={textMotion}
+                    >
+                      <FontAwesomeIcon icon={faArrowRight} className="ms-2" />
+                    </motion.div>
+                  </Link>
+                </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>
