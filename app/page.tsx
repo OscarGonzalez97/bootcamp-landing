@@ -1,57 +1,72 @@
 "use client"
-import Image from "next/image";
-// import Payment from "@/components/Payment";
-import { InputCoso } from "@/components/Input";
-import { ButtonDemo } from "@/components/Button";
-import { delay, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import fetchAllCurso from "@/services/querys";
 import { Cards } from "@/components/Cards";
-import { DemoTeamMembers } from "@/components/TeamMember";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import Carousel from '@/components/Carousel'
-import { useEffect, useState } from "react";
-import { gql } from "@apollo/client";
-import client from "../apollo-client";  
+import Carousel from "@/components/Carousel";
+import Loader from "@/components/Loader";
 
-export default async function Home() {
+interface Curso {
+  _id: string;
+  titulo: string;
+  // add any other properties here
+}
 
-  const { data } = await client.query({
-    query: gql`
-    query{
-      allCurso{
-        _id
-        titulo
-      }
-    }
-    `,
-  });
+export async function generateStaticParams() {
+  return [<Loader />];
+}
 
-  console.log(data)
+export default function Home() {
+  const [cursoData, setCursoData] = useState<Curso[] | null>(null);
+  const [carouselData, setCarouselData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [datos, setDatos] = useState(null)
   useEffect(() => {
-    const fetchReportData = async () => {
+    const fetchCursoData = async () => {
+      try {
+        const data = await fetchAllCurso();
+        setCursoData(data?.allCurso || []);
+      } catch (error) {
+        console.error("Error fetching curso data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    const fetchCarouselData = async () => {
       try {
         const response = await fetch("https://rickandmortyapi.com/api/character");
         const data = await response.json();
-        setDatos(data.results);
+        setCarouselData(data.results);
       } catch (error) {
-        console.error("Error fetching report data:", error);
+        console.error("Error fetching carousel data:", error);
       }
     };
-  
-    fetchReportData();
-  }, [])
+
+    fetchCursoData();
+    fetchCarouselData();
+  }, []);
+
+
 
   return (
-    <main className=" grid  place-items-center h-screen bg-background">
-      
-   
-      <Hero/>
-      <Cards/>
-      <Carousel data={data}/>
-      <Footer/>
-      
+    <main className="grid place-items-center h-screen bg-background">
+      <Hero />
+      <Cards />
+      {cursoData && (
+        <div className="curso-list">
+          {cursoData.map((curso) => (
+            <div key={curso._id}>{curso.titulo}</div>
+       
+
+
+          ))}
+        </div>
+      )}
+       {isLoading && <Loader />}
+      {carouselData && <Carousel data={carouselData} />}
+      <Footer />
     </main>
   );
 }
