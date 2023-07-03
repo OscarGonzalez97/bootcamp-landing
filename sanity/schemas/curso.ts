@@ -44,8 +44,8 @@ export default defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'icono',
-      title: 'Icono',
+      name: 'urlIcono',
+      title: 'UrlIcono',
       type: 'string',
     }),
   ],

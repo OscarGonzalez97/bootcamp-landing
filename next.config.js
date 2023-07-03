@@ -6,7 +6,6 @@ const nextConfig = {
             "brandslogos.com",
             "www.freepnglogos.com",
             "res.cloudinary.com",
-            "rickandmortyapi.com",
             "cdn.sanity.io",
         ],
     }

@@ -9,6 +9,8 @@ export const fetchAllCurso = async () => {
           allCurso {
             _id
             titulo
+            descripcion
+            urlIcono
           }
         }
       `,
