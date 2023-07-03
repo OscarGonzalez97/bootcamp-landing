@@ -5,7 +5,7 @@ import Hero from '@/components/Hero'
 import {Cards} from '@/components/Cards'
 import Footer from '@/components/Footer'
 
-const page = () => {
+const Page = () => {
     const [data, setData] = useState(null)
     useEffect(() => {
       const fetchReportData = async () => {
@@ -30,4 +30,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
