@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from 'next/image'
 import { CalendarDays } from "lucide-react"
 import Link from 'next/link'
-import { fetchAllBootcampRealizado } from '@/services/querys'
+import { fetchAllBootcampRealizado } from '@/services/querysBootcampsRealizados'
 import { IBootcampRealizado } from '@/helpers/types'
 import Loader from '@/components/Loader'
 import { showFormattedDate } from '@/helpers/utility'
