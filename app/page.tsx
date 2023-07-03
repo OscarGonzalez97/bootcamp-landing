@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import fetchAllCurso from "@/services/querys";
+import { fetchAllCurso } from "@/services/querys";
 import { Cards } from "@/components/Cards";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
