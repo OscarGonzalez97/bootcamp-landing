@@ -1,44 +1,65 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from 'next/image'
 import { CalendarDays } from "lucide-react"
 import Link from 'next/link'
+import { fetchAllBootcampRealizado } from '@/services/querysBootcampsRealizados'
+import { IBootcampRealizado } from '@/helpers/types'
+import Loader from '@/components/Loader'
+import { showFormattedDate } from '@/helpers/utility'
 
 
-function page() {
+const Page = () => {
 
-    const listaBootcamps = [
-        { id: 1, curso: {title: "Bootcamp React"}, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusantium maxime ex libero ratione distinctio minus excepturi error incidunt facere, a dolore, vitae, vero reprehenderit perferendis culpa sunt dolores odio.', date_from: '12/04/2023', date_to: '07/07/2023', picture: 'https://images.unsplash.com/photo-1674574124649-778f9afc0e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' },
-        { id: 2, curso: {title: "Bootcamp React"}, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusantium maxime ex libero ratione distinctio minus excepturi error incidunt facere, a dolore, vitae, vero reprehenderit perferendis culpa sunt dolores odio.', date_from: '12/04/2023', date_to: '07/07/2023', picture: 'https://images.unsplash.com/photo-1674574124649-778f9afc0e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' },
-        { id: 3, curso: {title: "Bootcamp React"}, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusantium maxime ex libero ratione distinctio minus excepturi error incidunt facere, a dolore, vitae, vero reprehenderit perferendis culpa sunt dolores odio.', date_from: '12/04/2023', date_to: '07/07/2023', picture: 'https://images.unsplash.com/photo-1674574124649-778f9afc0e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' }
-    ]
+    const [bootcampsData, setBootcampsData] = useState<IBootcampRealizado[] | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchCursoData = async () => {
+            try {
+                const data = await fetchAllBootcampRealizado();
+                // console.log(data)
+                setBootcampsData(data?.allBootcampRealizado || []);
+            } catch (error) {
+                console.error("Error fetching curso data:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchCursoData()
+    }, [])
+
 
     return (
         <div className='container grid gap-5 lg:px-52'>
             <h1 className="text-2xl sm:text-5xl font-bold text-foreground text-center mt-5">Bootcamps Realizados</h1>
-            <hr className='border-accent'/>
-            {listaBootcamps && listaBootcamps.map((item, index) => (
+            <hr className='border-accent' />
+
+            {isLoading && <div className='flex justify-center'><Loader /></div>}
+
+            {bootcampsData && bootcampsData.map((item, index) => (
                 <Card key={index} className='text-foreground text-center border-none bg-muted mb-5'>
                     <CardHeader>
-                        <Link href={`/bootcamps-realizados/${item.id}`} className='h-80'>
-                            <Image className='object-cover object-top w-full h-full' src={item.picture} alt={item.curso.title} width={1000} height={1000}></Image>
+                        <Link href={`/bootcamps-realizados/${item._id}`} className='h-80'>
+                            {item.imagen?.asset?.url && <Image className='object-cover object-top w-full h-full' src={item.imagen.asset.url} alt={item.curso.titulo} width={1000} height={1000}></Image>}
                         </Link>
                         <CardTitle className='text-3xl pt-3 font-bold'>
-                            {item.curso.title}
+                            {item.curso.titulo}
                             <hr className='my-3 border-accent' />
                         </CardTitle>
                         <CardDescription className='flex items-center justify-center'>
-                            <CalendarDays /> {item.date_from} a {item.date_to}</CardDescription>
-
+                            <CalendarDays className='me-2' /> {showFormattedDate(item.fechaDesde)} a {showFormattedDate(item.fechaHasta)}
+                        </CardDescription>
                     </CardHeader>
                     <CardContent >
 
-                        <p className='px-10'>{item.description}</p>
+                        <p className='px-10'>{item.curso.descripcion}</p>
 
                     </CardContent>
                     <CardFooter className='flex justify-center'>
-                        <Link href={`/bootcamps-realizados/${item.id}`}  >
+                        <Link href={`/bootcamps-realizados/${item._id}`}  >
                             <Button className='bg-accent text-background hover:bg-orange-400 hover:text-foreground '>Ver más info</Button>
                         </Link>
                     </CardFooter>
@@ -49,4 +70,4 @@ function page() {
     )
 }
 
-export default page
+export default Page
