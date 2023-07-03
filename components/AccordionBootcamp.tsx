@@ -5,7 +5,7 @@ export type Modulo = {
   titulo: string;
   duracion: number;
   contenidos: {
-    title: string;
+    descripcion: string;
   }[];
 };
 
@@ -30,7 +30,7 @@ export function AccordionBtc({ modulos }: AccordionBtcProps) {
               <p className="font-bold underline underline-offset-8 decoration-accent">Contenidos:</p>
               <ul>
                 {modulo.contenidos && modulo.contenidos.map((contenido, index) => (
-                  <li key={index}>{contenido.title}</li>
+                  <li key={index}>{contenido.descripcion}</li>
                 ))}
               </ul>
             </div>
