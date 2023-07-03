@@ -1,4 +1,4 @@
-"use client"
+// Import the necessary dependencies
 import { useEffect, useState } from "react";
 import { fetchAllCurso } from "@/services/querys";
 import fetchCarouselImages from "@/services/queryCarousel";
@@ -7,6 +7,17 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
 import Loader from "@/components/Loader";
+
+export async function GET(request: Request) {
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    }
+  });
+}
 
 export async function generateStaticParams() {
   return [<Loader key={"1"} />];
@@ -20,10 +31,9 @@ export default function Home() {
     const fetchCarouselData = async () => {
       try {
         const data = await fetchCarouselImages();
-        // console.log(data)
-        setLoadingCarouselData(true) 
+        setLoadingCarouselData(true);
         setCarouselData(data?.allBootcampRealizado || []);
-        setLoadingCarouselData(false)
+        setLoadingCarouselData(false);
       } catch (error) {
         console.error("Error fetching carousel data:", error);
       }
@@ -32,13 +42,11 @@ export default function Home() {
     fetchCarouselData();
   }, []);
 
-  {console.log(loadingCarouselData)}
-
   return (
     <main className="grid place-items-center h-screen bg-background">
       <Hero />
       <Cards />
-      {loadingCarouselData ? <Loader/> : <Carousel data={carouselData} />}
+      {loadingCarouselData ? <Loader /> : <Carousel data={carouselData} />}
       <Footer />
     </main>
   );
