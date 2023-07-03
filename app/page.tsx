@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { fetchAllCurso } from "@/services/querys";
+import fetchCarouselImages from "@/services/queryCarousel";
 import { Cards } from "@/components/Cards";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -8,7 +9,7 @@ import Carousel from "@/components/Carousel";
 import Loader from "@/components/Loader";
 
 export async function generateStaticParams() {
-  return [<Loader/>];
+  return [<Loader key={"1"} />];
 }
 
 export default function Home() {
@@ -17,9 +18,9 @@ export default function Home() {
   useEffect(() => {
     const fetchCarouselData = async () => {
       try {
-        const response = await fetch("https://rickandmortyapi.com/api/character");
-        const data = await response.json();
-        setCarouselData(data.results);
+        const data = await fetchCarouselImages();
+        // console.log(data)
+        setCarouselData(data?.allBootcampRealizado || []);
       } catch (error) {
         console.error("Error fetching carousel data:", error);
       }

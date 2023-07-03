@@ -14,13 +14,19 @@ declare global {
 }
 
 interface items {
-	image: string
+	imagen : {
+		asset : {
+			url :string
+		}
+	}
 }
 
 const CarouselPictures = (data: any) => {
 	const swiperElRef = useRef(null);
 	const [dimensions, setDimensions] = useState(0);
-	let reportData = data
+
+	let reportData = data.data
+	
 	// console.log(data)
 	// console.log(dimensions)
 
@@ -35,11 +41,6 @@ const CarouselPictures = (data: any) => {
 			// listen for Swiper events using addEventListener
 			swiperElRef.current.addEventListener('progress', (e: any) => {
 				const [swiper, progress] = e.detail;
-				console.log(progress);
-			});
-
-			swiperElRef.current.addEventListener('slidechange', (e: any) => {
-				console.log('slide changed');
 			});
 		}
 
@@ -54,7 +55,10 @@ const CarouselPictures = (data: any) => {
 
 	}, []);
 
-	if (reportData?.data != null) {
+
+	if (reportData != null) {
+		
+		// console.log( " reporte" + reportData.data)
 		return (
 			<div className='w-[87vw] md:w-[85vw] lg:w-[89vw]  xl:w-[98vw] xl:container xl:px-20  p-5 '>
 				<swiper-container
@@ -66,14 +70,17 @@ const CarouselPictures = (data: any) => {
 					autoplay="true"
 				>
 					{
-						reportData.data.map((item: items, index: number) => {
-							return (
-								<swiper-slide key={index}>
-									<div key={index} className='w-full h-[300px] flex items-center justify-center relative xl:h-[400px] lg:h-[400px] md:h-[350px]'>
-										<Image src={item.image} alt='' style={{ objectFit: "cover" }} fill className='px-3' sizes='100%' />
-									</div>
-								</swiper-slide>
-							)
+						
+						reportData.map((item: items, index: number) => {
+							if (item.imagen){ 
+								return (
+									<swiper-slide key={index}>
+										<div key={index} className='w-full h-[300px] flex items-center justify-center relative xl:h-[400px] lg:h-[400px] md:h-[350px]'>
+											<Image src={item.imagen.asset.url} alt=''style={{ objectFit: "cover" }} fill className='px-3' sizes='100%' />
+										</div>
+									</swiper-slide>
+								)
+							}
 						})
 					}
 				</swiper-container>
