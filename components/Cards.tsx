@@ -33,7 +33,7 @@ interface Curso {
   _id: number;
   titulo: string;
   descripcion: string;
-  icono: string;
+  urlIcono: string;
   // add any other properties here
 }
 
@@ -110,7 +110,7 @@ export function Cards() {
                   <CardHeader className="h-1/4">
                     <div className="flex justify-start items-center">
                       <Avatar>
-                        <AvatarImage src={curso.icono} />
+                        <AvatarImage src={curso.urlIcono} />
                         <AvatarFallback>ICO</AvatarFallback>
                       </Avatar>
 

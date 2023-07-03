@@ -10,7 +10,7 @@ export const fetchAllCurso = async () => {
             _id
             titulo
             descripcion
-            icono
+            urlIcono
           }
         }
       `,
