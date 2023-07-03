@@ -14,7 +14,7 @@ export type Modulo = {
   titulo: string;
   duracion: number;
   contenidos: {
-      title: string;
+    descripcion: string;
   }[];
 };
 
