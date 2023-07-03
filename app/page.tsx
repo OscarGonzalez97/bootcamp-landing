@@ -32,7 +32,7 @@ export default function Home() {
     fetchCarouselData();
   }, []);
 
-  {console.log(loadingCarouselData)}
+  // {console.log(loadingCarouselData)}
 
   return (
     <main className="grid place-items-center h-screen bg-background">
