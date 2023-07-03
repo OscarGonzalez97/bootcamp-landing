@@ -25,7 +25,6 @@ import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { fetchAllCurso } from "@/services/querys";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
@@ -33,7 +32,10 @@ interface Curso {
   _id: number;
   titulo: string;
   descripcion: string;
-  urlIcono: string;
+  icono: string;
+  slug: {
+    current: string;
+  };
   // add any other properties here
 }
 
@@ -87,13 +89,6 @@ export function Cards() {
     }
   };
 
-  const bootcamps = [
-    { title: 'React', description: 'Da tus primeros pasos en el mundo de la programación aprendiendo sus estructuras fundamentales y la lógica funcional detrás de cada línea de código.', icon: faReact, color: '#2ea4ff' },
-    { title: 'Java', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faJava, color: '#407add' },
-    { title: 'Android', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faAndroid, color: '#24e027' },
-    { title: 'JavaScript', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faJsSquare, color: '#f7e51d' }
-  ];
-
   const offsetDelay = 0.2
 
 
@@ -110,7 +105,7 @@ export function Cards() {
                   <CardHeader className="h-1/4">
                     <div className="flex justify-start items-center">
                       <Avatar>
-                        <AvatarImage src={curso.urlIcono} />
+                        <AvatarImage src={curso.icono} />
                         <AvatarFallback>ICO</AvatarFallback>
                       </Avatar>
 
@@ -125,28 +120,30 @@ export function Cards() {
                       className="flex"
                       variants={textMotion2}
                     >
-                      <Link href={''} className="flex">
-                        <span >
-                          Ver Más
-                          <motion.svg xmlns="http://www.w3.org/2000/svg" width="60" height="1">
-                            <motion.line
-                              x1="0"
-                              y1="0"
-                              x2="100"
-                              y2="0"
-                              stroke="black"
-                              strokeWidth="20"
-                              initial={{ strokeDashoffset: 100, strokeDasharray: 100 }}
-                              variants={lineMotion}
-                            />
-                          </motion.svg>
-                        </span>
-                        <motion.div
-                          variants={textMotion}
-                        >
-                          <FontAwesomeIcon icon={faArrowRight} className="ms-2" />
-                        </motion.div>
-                      </Link>
+                      {curso.slug &&
+                        <Link href={`bootcamp/${curso.slug.current}`} className="flex">
+                          <span >
+                            Ver Más
+                            <motion.svg xmlns="http://www.w3.org/2000/svg" width="60" height="1">
+                              <motion.line
+                                x1="0"
+                                y1="0"
+                                x2="100"
+                                y2="0"
+                                stroke="black"
+                                strokeWidth="20"
+                                initial={{ strokeDashoffset: 100, strokeDasharray: 100 }}
+                                variants={lineMotion}
+                              />
+                            </motion.svg>
+                          </span>
+                          <motion.div
+                            variants={textMotion}
+                          >
+                            <FontAwesomeIcon icon={faArrowRight} className="ms-2" />
+                          </motion.div>
+                        </Link>
+                      }
                     </motion.div>
                   </CardContent>
                 </Card>
