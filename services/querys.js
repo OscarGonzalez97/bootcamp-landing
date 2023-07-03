@@ -19,7 +19,7 @@ export const fetchAllCurso = async () => {
         }
       `,
     });
-    
+
     return data;
   } catch (error) {
     console.error("Error fetching allCurso:", error);
