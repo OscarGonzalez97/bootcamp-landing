@@ -7,8 +7,6 @@ const nextConfig = {
             "www.freepnglogos.com",
             "res.cloudinary.com",
             "cdn.sanity.io",
-            
-            
         ],
     }
 }

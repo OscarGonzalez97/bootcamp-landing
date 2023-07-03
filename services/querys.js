@@ -9,11 +9,17 @@ export const fetchAllCurso = async () => {
           allCurso {
             _id
             titulo
+            descripcion
+            icono
+            slug
+            {
+              current
+            }
           }
         }
       `,
     });
-    
+
     return data;
   } catch (error) {
     console.error("Error fetching allCurso:", error);

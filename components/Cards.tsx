@@ -23,8 +23,42 @@ import { faAndroid, faJava, faReact, faJsSquare } from '@fortawesome/free-brands
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import { fetchAllCurso } from "@/services/querys";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+
+interface Curso {
+  _id: number;
+  titulo: string;
+  descripcion: string;
+  icono: string;
+  slug: {
+    current: string;
+  };
+  // add any other properties here
+}
 
 export function Cards() {
+
+  const [cursoData, setCursoData] = useState<Curso[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCursoData = async () => {
+      try {
+        const data = await fetchAllCurso();
+        setCursoData(data?.allCurso || []);
+      } catch (error) {
+        console.error("Error fetching curso data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCursoData();
+  }, []);
+
   const textMotion = {
     hover: {
       x: 20,
@@ -55,68 +89,69 @@ export function Cards() {
     }
   };
 
-  const bootcamps = [
-    { title: 'React', description: 'Da tus primeros pasos en el mundo de la programación aprendiendo sus estructuras fundamentales y la lógica funcional detrás de cada línea de código.', icon: faReact, color: '#2ea4ff' },
-    { title: 'Java', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faJava, color: '#407add' },
-    { title: 'Android', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faAndroid, color: '#24e027' },
-    { title: 'JavaScript', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia magnam maiores quae nihil harum, blanditiis, cupiditate ipsa, inventore neque libero iusto veritatis fugit explicabo doloribus veniam vitae fugiat repudiandae non', icon: faJsSquare, color: '#f7e51d' }
-  ];
-
   const offsetDelay = 0.2
 
 
   return (
-    <div
+    <div className="grid place-items-center container px-12 md:px-20">
+      {cursoData && (
+        <div className="cartacont p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
+          {
+            cursoData.map((curso) => (
+              <motion.div key={curso._id} initial={{ x: '100vh', opacity: 0 }}
+                animate={{ x: '0', opacity: 1 }}
+                transition={{ duration: 0.8, delay: offsetDelay * curso._id }}>
+                <Card key={curso._id} className="h-auto md:h-96">
+                  <CardHeader className="h-1/4">
+                    <div className="flex justify-start items-center">
+                      <Avatar>
+                        <AvatarImage src={curso.icono} />
+                        <AvatarFallback>ICO</AvatarFallback>
+                      </Avatar>
 
-      className="grid place-items-center container px-12 md:px-20">
-      <div className="cartacont p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
-        {bootcamps.map((item, index) => (
-          <motion.div key={index} initial={{ x: '100vh', opacity: 0 }}
-            animate={{ x: '0', opacity: 1 }}
-            transition={{ duration: 0.8, delay: offsetDelay * index }}>
-            <Card key={index} className="h-auto md:h-96">
-              <CardHeader>
-                <div className="flex justify-start items-center text-2xl">
-                  <FontAwesomeIcon icon={item.icon} style={{ color: item.color }} className="me-2 w-6 " />
-                  <CardTitle className="text-xl">{item.title}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="text-sm text-justify opacity-60 h-4/5 flex flex-col justify-between">
-                <span className="pb-10 md:mb-0">{item.description}</span>
-                <motion.div
-                  whileHover="hover"
-                  whileTap="hover"
-                  className="flex"
-                  variants={textMotion2}
-                >
-                  <Link href={''} className="flex">
-                    <span >
-                      Ver Más
-                      <motion.svg xmlns="http://www.w3.org/2000/svg" width="60" height="1">
-                        <motion.line
-                          x1="0"
-                          y1="0"
-                          x2="100"
-                          y2="0"
-                          stroke="black"
-                          strokeWidth="20"
-                          initial={{ strokeDashoffset: 100, strokeDasharray: 100 }}
-                          variants={lineMotion}
-                        />
-                      </motion.svg>
-                    </span>
+                      <CardTitle className="text-xl ms-2">{curso.titulo}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="text-sm text-justify opacity-60 h-3/4 flex flex-col justify-between">
+                    <span className="pb-10 md:mb-0">{curso.descripcion}</span>
                     <motion.div
-                      variants={textMotion}
+                      whileHover="hover"
+                      whileTap="hover"
+                      className="flex"
+                      variants={textMotion2}
                     >
-                      <FontAwesomeIcon icon={faArrowRight} className="ms-2" />
+                      {curso.slug &&
+                        <Link href={`bootcamp/${curso.slug.current}`} className="flex">
+                          <span >
+                            Ver Más
+                            <motion.svg xmlns="http://www.w3.org/2000/svg" width="60" height="1">
+                              <motion.line
+                                x1="0"
+                                y1="0"
+                                x2="100"
+                                y2="0"
+                                stroke="black"
+                                strokeWidth="20"
+                                initial={{ strokeDashoffset: 100, strokeDasharray: 100 }}
+                                variants={lineMotion}
+                              />
+                            </motion.svg>
+                          </span>
+                          <motion.div
+                            variants={textMotion}
+                          >
+                            <FontAwesomeIcon icon={faArrowRight} className="ms-2" />
+                          </motion.div>
+                        </Link>
+                      }
                     </motion.div>
-                  </Link>
-                </motion.div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+        </div>
+      )}
     </div>
   );
 }
+
