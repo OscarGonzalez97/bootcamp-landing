@@ -14,13 +14,16 @@ export async function generateStaticParams() {
 
 export default function Home() {
   const [carouselData, setCarouselData] = useState(null);
+  const [loadingCarouselData, setLoadingCarouselData] = useState<Boolean>(false);
 
   useEffect(() => {
     const fetchCarouselData = async () => {
       try {
         const data = await fetchCarouselImages();
         // console.log(data)
+        setLoadingCarouselData(true) 
         setCarouselData(data?.allBootcampRealizado || []);
+        setLoadingCarouselData(false)
       } catch (error) {
         console.error("Error fetching carousel data:", error);
       }
@@ -29,13 +32,13 @@ export default function Home() {
     fetchCarouselData();
   }, []);
 
-
+  {console.log(loadingCarouselData)}
 
   return (
     <main className="grid place-items-center h-screen bg-background">
       <Hero />
       <Cards />
-      {carouselData && <Carousel data={carouselData} />}
+      {loadingCarouselData ? <Loader/> : <Carousel data={carouselData} />}
       <Footer />
     </main>
   );
