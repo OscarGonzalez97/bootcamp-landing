@@ -13,6 +13,14 @@ declare global {
 	}
 }
 
+
+interface evento {
+	addEventListener: any
+	current: {
+		addEventListener: any
+	}
+}
+
 interface items {
 	imagen : {
 		asset : {
@@ -22,7 +30,7 @@ interface items {
 }
 
 const CarouselPictures = (data: any) => {
-	const swiperElRef = useRef(null);
+	const swiperElRef = useRef<evento>(null);
 	const [dimensions, setDimensions] = useState(0);
 
 	let reportData = data.data
