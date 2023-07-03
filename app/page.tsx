@@ -14,7 +14,7 @@ interface Curso {
 }
 
 export async function generateStaticParams() {
-  return [<Loader />];
+  return [<Loader key={"1"} />];
 }
 
 export default function Home() {
