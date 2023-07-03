@@ -9,12 +9,13 @@ import fetchCarouselImages from "@/services/queryCarousel";
 
 const Page = () => {
     const [data, setData] = useState(null)
+    
     useEffect(() => {
       const fetchCarouselData = async () => {
         try {
           const data = await fetchCarouselImages();
           // console.log(data)
-          setCarouselData(data?.allBootcampRealizado || []);
+          setData(data?.allBootcampRealizado || []);
         } catch (error) {
           console.error("Error fetching carousel data:", error);
         }
@@ -27,7 +28,7 @@ const Page = () => {
     <main className=" grid  place-items-center h-screen bg-background">
     <Hero/>
     <Cards/>
-    <Carousel data={carouselData}/>
+    <Carousel data={data}/>
     <Footer/>
     </main>
   )
