@@ -43,6 +43,11 @@ export default defineType({
       title: 'Published at',
       type: 'datetime',
     }),
+    defineField({
+      name: 'icono',
+      title: 'Icono',
+      type: 'string',
+    }),
   ],
 
   preview: {
