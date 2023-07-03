@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import { register } from 'swiper/element/bundle';
+import Loader from "@/components/Loader";
+
 
 interface SwiperContainerProps extends React.HTMLAttributes<HTMLElement> {
   ref?: React.RefObject<HTMLDivElement> | ((instance: HTMLDivElement | null) => void) | null;
@@ -85,7 +87,7 @@ const CarouselPictures = (data: any) => {
       </div>
     );
   } else {
-    return <div className='w-screen'>Loading ...</div>;
+    return <div className='w-screen'><Loader/></div>;
   }
 };
 
