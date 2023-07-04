@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { fetchAllCurso } from "@/services/querys";
-import fetchCarouselImages from "@/services/queryCarousel";
+
 import { Cards } from "@/components/Cards";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
