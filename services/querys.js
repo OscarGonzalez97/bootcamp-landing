@@ -10,7 +10,7 @@ export const fetchAllCurso = async () => {
             _id
             titulo
             descripcion
-            icono
+            urlIcono
             slug
             {
               current
@@ -90,9 +90,7 @@ export const fetchAllBlog = async () => {
           title
           publishedAt
           contentRaw
-          slug {
-            current
-          }
+         excerpt
           autor {
             nombre,
             avatar {

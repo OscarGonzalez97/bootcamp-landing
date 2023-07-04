@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import {  defineType } from 'sanity';
 
 export default defineType({
   name: 'blog',
@@ -43,7 +43,7 @@ export default defineType({
     },
     {
       name: 'publishedAt',
-      type: 'datetime',
+      type: 'date',
       title: 'Published at',
     },
     {
@@ -52,14 +52,14 @@ export default defineType({
       type: 'array',
       of: [{ type: 'reference', to: { type: 'autor' } }],
     },
-    defineField({
-      name: 'slug',
-      title: 'Slug/URL',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    }),
+    { 
+    name: 'slug',
+    title: 'Slug/URL',
+    type: 'slug',
+    options: {
+      source: 'title',
+      maxLength: 96,
+    },
+  },
   ],
 });
