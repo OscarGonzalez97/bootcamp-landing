@@ -90,3 +90,6 @@
   grid-row: span 3 ;
   grid-template-rows: subgrid;
 } 
+.textoDesc{
+  width: clamp(45ch, 50%, 75ch);
+}

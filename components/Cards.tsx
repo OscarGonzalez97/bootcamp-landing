@@ -79,13 +79,13 @@ export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
   return (
     <div className="grid place-items-center container px-12 md:px-20">
       {cursoData && (
-        <div className="cartacont p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
+        <div className=" p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-full">
           {
             cursoData.map((curso) => (
-              <motion.div key={curso._id} initial={{ x: '100vh', opacity: 0 }}
+              <motion.div key={curso._id} initial={{ x: '100vw', opacity: 0 }}
                 animate={{ x: '0', opacity: 1 }}
                 transition={{ duration: 0.8, delay: offsetDelay * curso._id }}>
-                <Card key={curso._id} className="h-auto md:h-96">
+                <Card key={curso._id} className="h-full md:h-full ">
                   <CardHeader className="h-1/4">
                     <div className="flex justify-start items-center">
                       <Avatar>
@@ -97,7 +97,7 @@ export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
                     </div>
                   </CardHeader>
                   <CardContent className="text-sm text-justify opacity-60 h-3/4 flex flex-col justify-between">
-                    <span className="pb-10 md:mb-0">{curso.descripcion}</span>
+                    <span className="pb-10 md:mb-0 ">{curso.descripcion}</span>
                     <motion.div
                       whileHover="hover"
                       whileTap="hover"
