@@ -65,10 +65,10 @@ const CarouselPictures = (data: any) => {
       <div className='w-[87vw] md:w-[85vw] lg:w-[89vw]  xl:w-[98vw] xl:container xl:px-20  p-5 '>
         <swiper-container
           ref={swiperElRef}
-          pagination={true}
+       
           slides-per-view={dimensions < 770 ? 1 : dimensions < 1385 ? 2 : 3}
           navigation={true}
-          loop={true}
+      
           autoplay={true}
         >
           {reportData.map((item: Item, index: number) => {
