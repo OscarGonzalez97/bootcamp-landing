@@ -79,3 +79,33 @@ export const fetchCursoBySlug = async (slug) => {
     return null;
   }
 };
+
+export const fetchAllBlog = async () => {
+  try {
+    const { data } = await client.query({
+      query: gql`
+      query {
+        allBlog {
+          _id
+          title
+          publishedAt
+          contentRaw
+          autor {
+            nombre,
+            avatar {
+              asset{
+                url
+              }
+            }
+          }
+        }
+      }
+      `,
+    });
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching allCurso:", error);
+    return null;
+  }
+}
