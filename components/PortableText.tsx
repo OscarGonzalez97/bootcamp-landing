@@ -22,9 +22,7 @@ const myPortableTextComponents: Partial<PortableTextReactComponents>  = {
 };
 
 const Portable = (props: { value: any }) => {
-  console.log("Dataset:", process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET);
-  console.log("Project ID:", process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID);
-  console.log("Value:", props.value);
+
 
   return <PortableText value={props.value} components={myPortableTextComponents} />;
 };
