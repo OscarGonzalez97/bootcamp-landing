@@ -14,7 +14,7 @@ interface Curso {
   _id: number;
   titulo: string;
   descripcion: string;
-  icono: string;
+  urlIcono: string;
   slug: {
     current: string;
   };
@@ -31,6 +31,8 @@ export default function Home() {
 
   const [cursoData, setCursoData] = useState<Curso[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  
 
   useEffect(() => {
     const fetchCursoData = async () => {
@@ -50,6 +52,7 @@ export default function Home() {
 
     fetchCursoData();
   }, []);
+
 
  
 

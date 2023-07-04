@@ -10,7 +10,7 @@ export const fetchAllCurso = async () => {
             _id
             titulo
             descripcion
-            icono
+            urlIcono
             slug
             {
               current
@@ -34,6 +34,44 @@ export const fetchAllCurso = async () => {
     return null;
   }
 };
+
+export const fetchAllBlog = async () => {
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query {
+          allBlog {
+            edges {
+              node {
+                title
+                content {
+                  _type
+                  children {
+                    _type
+                    text
+                  }
+                  alt
+                }
+                publishedAt
+                autor {
+                  _key
+                  _type
+                  _ref
+                }
+              }
+            }
+          }
+        }
+      `,
+    });
+
+    return data.allBlog.edges.map((edge) => edge.node); // Return an array of all blogs
+  } catch (error) {
+    console.error("Error fetching allBlog:", error);
+    return null;
+  }
+};
+
 
 export const fetchCursoBySlug = async (slug) => {
   try {
