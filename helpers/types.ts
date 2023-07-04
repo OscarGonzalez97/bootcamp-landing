@@ -22,3 +22,14 @@ type Image = {
         url : string;
     }
 }
+export interface IBlog {
+    _id: string;
+    title: string;
+    excerpt: string;
+    contentRaw: any; // Adjust this type to match the structure of `item.contentRaw`
+    publishedAt: string;
+    slug: { current: string };
+    autor: { avatar: { asset: { url: string } }; nombre: string }[];
+    // Add any other properties from the schema that you're using
+  }
+  

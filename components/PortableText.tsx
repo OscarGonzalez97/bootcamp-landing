@@ -1,37 +1,31 @@
-import {PortableText} from '@portabletext/react'
-// import client from './sanityClient'
-import client from "../apollo-client";
-import imageUrlBuilder from '@sanity/image-url'
+import { PortableText, PortableTextReactComponents } from '@portabletext/react';
 
-// Get a pre-configured url-builder from your sanity client
-const builder = imageUrlBuilder(client)
 
-// Then we like to make a simple function like this that gives the
-// builder an image and returns the builder for you to specify additional
-// parameters:
-function urlFor(source) {
-  return builder.image(source)
-}
+import urlBuilder from '@sanity/image-url';
 
-const myPortableTextComponents = {
-    types: {
-      image: ({value}) => <img src={value.imageUrl} />,
-    },
-        block: {
-          // Ex. 1: customizing common block types
-          h1: ({children}) => <h1 className="text-2xl">{children}</h1>,
-          blockquote: ({children}) => <blockquote className="border-l-purple-500">{children}</blockquote>,
-      
-          // Ex. 2: rendering custom styles
-          customHeading: ({children}) => (
-            <h2 className="text-lg text-primary text-purple-700">{children}</h2>
-          ),
-        },
-  }
-  
-  const Portable = (props) => {
-    console.log(props)
-    return <PortableText value={props.value} components={myPortableTextComponents} />
-  }
-  
-  export default Portable
+const urlFor = (source :any ) => {
+  return urlBuilder({
+    projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID!,
+    dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET!,
+  }).image(source);
+};
+
+import { ReactNode } from 'react';
+const myPortableTextComponents: Partial<PortableTextReactComponents>  = {
+  types: {
+    image: ({ value }: { value: { asset: any } }) => <img src={urlFor(value.asset).url()} />,
+  },
+  block: {
+    h1: ({ children }: { children?: ReactNode }) => <h1 className="text-8xl text-red-600">{children}</h1>,
+  },
+};
+
+const Portable = (props: { value: any }) => {
+  console.log("Dataset:", process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET);
+  console.log("Project ID:", process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID);
+  console.log("Value:", props.value);
+
+  return <PortableText value={props.value} components={myPortableTextComponents} />;
+};
+
+export default Portable;
