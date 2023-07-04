@@ -90,8 +90,9 @@ export const fetchAllBlog = async () => {
           title
           publishedAt
           contentRaw
-          slug
-          excerpt
+          slug {
+            current
+          }
           autor {
             nombre,
             avatar {
