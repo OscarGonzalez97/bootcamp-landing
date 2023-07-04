@@ -1,4 +1,4 @@
-// Import the necessary dependencies
+"use client"
 import { useEffect, useState } from "react";
 import { fetchAllCurso } from "@/services/querys";
 import fetchCarouselImages from "@/services/queryCarousel";
