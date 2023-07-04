@@ -9,6 +9,18 @@ import Carousel from "@/components/Carousel";
 import Loader from "@/components/Loader";
 
 
+
+interface Curso {
+  _id: number;
+  titulo: string;
+  descripcion: string;
+  icono: string;
+  slug: {
+    current: string;
+  };
+  // add any other properties here
+}
+
 export async function generateStaticParams() {
   return [<Loader key={"1"} />];
 }
@@ -17,25 +29,34 @@ export default function Home() {
   const [carouselData, setCarouselData] = useState(null);
   const [loadingCarouselData, setLoadingCarouselData] = useState<Boolean>(false);
 
+  const [cursoData, setCursoData] = useState<Curso[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    const fetchCarouselData = async () => {
+    const fetchCursoData = async () => {
       try {
-        const data = await fetchCarouselImages();
+        const data = await fetchAllCurso();
         setLoadingCarouselData(true);
+        setCursoData(data?.allCurso || []);
         setCarouselData(data?.allBootcampRealizado || []);
         setLoadingCarouselData(false);
+        console.log(data)
       } catch (error) {
-        console.error("Error fetching carousel data:", error);
+        console.error("Error fetching curso data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchCarouselData();
+    fetchCursoData();
   }, []);
+
+ 
 
   return (
     <main className="grid place-items-center h-screen bg-background">
       <Hero />
-      <Cards />
+      <Cards cursoData={cursoData} />
       {loadingCarouselData ? <Loader /> : <Carousel data={carouselData} />}
       <Footer />
     </main>

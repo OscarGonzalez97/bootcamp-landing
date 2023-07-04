@@ -39,25 +39,9 @@ interface Curso {
   // add any other properties here
 }
 
-export function Cards() {
+export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
 
-  const [cursoData, setCursoData] = useState<Curso[] | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchCursoData = async () => {
-      try {
-        const data = await fetchAllCurso();
-        setCursoData(data?.allCurso || []);
-      } catch (error) {
-        console.error("Error fetching curso data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCursoData();
-  }, []);
+  
 
   const textMotion = {
     hover: {

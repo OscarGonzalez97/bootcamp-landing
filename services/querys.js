@@ -16,6 +16,14 @@ export const fetchAllCurso = async () => {
               current
             }
           }
+          allBootcampRealizado {
+            imagen {
+              asset {
+                url
+              }
+            }
+          }
+          
         }
       `,
     });
