@@ -32,7 +32,7 @@ export default function Nav() {
               <Link href={"/bootcamps-realizados"}>Bootcamps Realizados</Link>
             </div>
             <div className='text-2xl hover:text-slate-400 cursor-pointer flex items-center text-white font-[Arial]'>
-              <Link href={"/bootcamp-blog"}>Blog</Link>
+              <Link href={"/blogs"}>Blog</Link>
             </div>
           </div>
         </nav>
@@ -43,7 +43,7 @@ export default function Nav() {
           <Link href={"/bootcamps-realizados"}>Bootcamps Realizados</Link>
         </div>
         <div className='text-2xl hover:text-slate-400 cursor-pointer flex items-center text-white font-[Arial] py-8 justify-center  w-9/12'>
-          <Link href={"/bootcamp-blog"}>Blog</Link>
+          <Link href={"/blogs"}>Blog</Link>
         </div>
         </div>
       </nav>
