@@ -23,6 +23,7 @@ type Image = {
     }
 }
 export interface IBlog {
+    map(arg0: (item: IBlog, index: number) => import("react").JSX.Element): import("react").ReactNode;
     _id: string;
     title: string;
     excerpt: string;

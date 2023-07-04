@@ -99,7 +99,7 @@ const Page = () => {
                
             </CardContent>
             <CardFooter className="flex justify-center">
-              <Link href={`/blogs/${item.slug}`}>
+              <Link href={`/blog/${item.slug.current}`}>
                 <Button className="bg-accent text-background hover:bg-orange-400 hover:text-foreground ">
                   Ver más info
                 </Button>

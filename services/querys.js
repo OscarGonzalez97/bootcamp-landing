@@ -90,6 +90,9 @@ export const fetchAllBlog = async () => {
           title
           publishedAt
           contentRaw
+          slug {
+            current
+          }
          excerpt
           autor {
             nombre,
@@ -110,3 +113,38 @@ export const fetchAllBlog = async () => {
     return null;
   }
 }
+
+export const fetchBlogBySlug = async (slug) => {
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query FetchBlogBySlug($slug: String!) {
+          allBlog(where: { slug: { current: { eq: $slug } } }) {
+            _id
+            title
+            publishedAt
+            contentRaw
+           
+     
+            autor {
+              nombre
+              avatar {
+                asset {
+                  url
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        slug: slug,
+      },
+    });
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching blog by slug:", error);
+    return null;
+  }
+};

@@ -13,10 +13,11 @@ const urlFor = (source :any ) => {
 import { ReactNode } from 'react';
 const myPortableTextComponents: Partial<PortableTextReactComponents>  = {
   types: {
-    image: ({ value }: { value: { asset: any } }) => <img src={urlFor(value.asset).url()} />,
+    image: ({ value }: { value: { asset: any } }) => <div className='w-full flex justify-center items-center'><img src={urlFor(value.asset).url()}  className='w-2/4 rounded-lg my-10' /></div>,
   },
   block: {
-    h1: ({ children }: { children?: ReactNode }) => <h1 className="text-8xl text-red-600">{children}</h1>,
+    h1: ({ children }: { children?: ReactNode }) => <h1 className="text-base  ">{children}</h1>,
+    p: ({ children }: { children?: ReactNode }) => <p className="text-base ">{children}</p>,
   },
 };
 
