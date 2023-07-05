@@ -67,25 +67,23 @@ const Page = () => {
             className="text-foreground text-center border-none bg-muted mb-5"
           >
             <CardHeader>
-              {
-                (() => {
-                  let jsxElements: JSX.Element[] = [];
-                  item.contentRaw.some((content: any, index: number) => {
-                    if (content._type === 'image') {
-                      jsxElements.push(
-                        <Link key={index} href={`/blog/${item.slug.current}`} className='h-80 bg-primary'> 
-                        <div className="object-cover object-top w-full h-full bg-red-400">
-                          <Image className='object-cover object-top w-full h-full' src={urlFor(content.asset._ref).url()} alt={content.alt} width={1000} height={1000}></Image>
-                        </div>
-                        </Link>
-                      );
-                      return true; // Exit the iteration after finding the first image
-                    }
-                    return false;
-                  });
-                  return jsxElements;
-                })()
-              }
+            {(() => {
+              let jsxElements: JSX.Element[] = [];
+              item.contentRaw.some((content: any, index: number) => {
+                if (content._type === 'image') {
+                  jsxElements.push(
+                    <Link key={index} href={`/blog/${item.slug.current}`} className='h-80 bg-primary'> 
+                      <div className="object-cover object-top w-full h-full bg-red-400">
+                        <Image className='object-cover object-top w-full h-full' src={urlFor(content.asset._ref).url()} alt={content.alt} width={1000} height={1000}></Image>
+                      </div>
+                    </Link>
+                  );
+                  return true; // Exit the iteration after finding the first image
+                }
+                return false;
+              });
+              return <>{jsxElements}</>; // Wrap the JSX elements with a fragment or a parent component
+            })()}
 
               <CardTitle className="text-3xl pt-3 font-bold">
                 {item.title}
