@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,16 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import { CalendarDays } from "lucide-react";
-import Link from "next/link";
-import { fetchAllBootcampRealizado } from "@/services/querysBootcampsRealizados";
 import {  IBlog } from "@/helpers/types";
 import Loader from "@/components/Loader";
 import { showFormattedDate } from "@/helpers/utility";
 import { fetchAllBlog, fetchBlogBySlug } from "@/services/querys";
 import Portable from "@/components/PortableText";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 
 interface Props {
     params: {
