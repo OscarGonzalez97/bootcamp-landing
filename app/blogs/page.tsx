@@ -64,7 +64,7 @@ const Page = () => {
         blogData.map((item: IBlog, index: number) => (
           <Card
             key={index}
-            className="text-foreground text-center border-none bg-muted mb-5 max-w-[80vw] lg:max-w-3xl"
+            className="text-foreground text-center border-none bg-muted mb-5  break-words max-w-[80vw] lg:max-w-3xl"
           >
             <CardHeader>
             {(() => {
@@ -96,7 +96,7 @@ const Page = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-            <p className='px-10 pb-5 break-words'>{item.excerpt}</p>
+            <p className='px-10 pb-5'>{item.excerpt}</p>
               
               {item.autor.map(
                 (
