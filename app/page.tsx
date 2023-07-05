@@ -57,7 +57,7 @@ export default function Home() {
  
 
   return (
-    <main className="grid place-items-center h-screen bg-background">
+    <main className="grid place-items-center h-screen bg-background gap-10">
       <Hero />
       <Cards cursoData={cursoData} />
       {loadingCarouselData ? <Loader /> : <Carousel data={carouselData} />}
