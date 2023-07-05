@@ -72,8 +72,8 @@ const Page = () => {
               item.contentRaw.some((content: any, index: number) => {
                 if (content._type === 'image') {
                   jsxElements.push(
-                    <Link key={index} href={`/blog/${item.slug.current}`} className='h-80 bg-primary'> 
-                      <div className="object-cover object-top w-full h-full bg-red-400">
+                    <Link key={index} href={`/blog/${item.slug.current}`} className='h-80'> 
+                      <div className="object-cover object-top w-full h-full">
                         <Image className='object-cover object-top w-full h-full' src={urlFor(content.asset._ref).url()} alt={content.alt} width={1000} height={1000}></Image>
                       </div>
                     </Link>
