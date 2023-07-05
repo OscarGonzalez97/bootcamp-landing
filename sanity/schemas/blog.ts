@@ -1,4 +1,4 @@
-import {  defineType } from 'sanity';
+import { defineType } from 'sanity';
 
 export default defineType({
   name: 'blog',
@@ -9,12 +9,14 @@ export default defineType({
       name: 'title',
       type: 'string',
       title: 'Title',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'excerpt',
       type: 'text',
       title: 'Excerpt',
       description: 'A short description or summary of the blog post.',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'content',
@@ -36,30 +38,35 @@ export default defineType({
               alternative text is of great help for those 
               people that can rely on it to have a good idea of 
               what's on your page.`,
+              validation: (Rule) => Rule.required(),
             },
           ],
         },
       ],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'publishedAt',
       type: 'date',
       title: 'Published at',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'autor',
       title: 'Autor',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'autor' } }],
+      validation: (Rule) => Rule.required(),
     },
-    { 
-    name: 'slug',
-    title: 'Slug/URL',
-    type: 'slug',
-    options: {
-      source: 'title',
-      maxLength: 96,
+    {
+      name: 'slug',
+      title: 'Slug/URL',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
     },
-  },
   ],
 });

@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,16 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import { CalendarDays } from "lucide-react";
-import Link from "next/link";
-import { fetchAllBootcampRealizado } from "@/services/querysBootcampsRealizados";
 import {  IBlog } from "@/helpers/types";
 import Loader from "@/components/Loader";
 import { showFormattedDate } from "@/helpers/utility";
 import { fetchAllBlog, fetchBlogBySlug } from "@/services/querys";
 import Portable from "@/components/PortableText";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 
 interface Props {
     params: {
@@ -36,8 +32,8 @@ export default function Page({ params }: Props) {
     const fetchBlogsData = async () => {
       try {
         const data = await fetchBlogBySlug(slug);
-        console.log("@@@", data?.allBlog?.contentRaw);
-        console.log(data);
+        // console.log("@@@", data?.allBlog?.contentRaw);
+        // console.log(data);
 
         setBlog(data?.allBlog || []);
       } catch (error) {
@@ -50,7 +46,7 @@ export default function Page({ params }: Props) {
   }, []);
 
   return (
-    <div className="container grid gap-5 lg:px-52">
+    <div className="container grid gap-5 lg:px-52 place-content-center">
      
 
       {isLoading && (
@@ -63,7 +59,7 @@ export default function Page({ params }: Props) {
         blog.map((item: IBlog, index: number) => (
           <Card
             key={index}
-            className="text-foreground  border-none  bg-background mb-5"
+            className="text-foreground  border-none w-[80vw] bg-background mb-5 break-words lg:max-w-3xl"
           >
             <CardHeader>
             
@@ -81,7 +77,9 @@ export default function Page({ params }: Props) {
                 
               
                 <div className="grid mt-10 w-full">
+                  <div className="overflow-x-auto max-w-full">
                     <Portable value={item.contentRaw} />
+                  </div>
                 </div>
             </CardContent>
             <CardFooter className="flex ">
@@ -96,7 +94,7 @@ export default function Page({ params }: Props) {
                   return (
                     <div
                       key={index}
-                      className="flex gap-12 "
+                      className="flex gap-12 text-accent"
                     >
                       <div>
                         
