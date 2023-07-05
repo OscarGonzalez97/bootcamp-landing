@@ -9,6 +9,7 @@ export default defineType({
             name: 'descripcion',
             title: 'Descripcion',
             type: 'string',
+            validation: Rule => Rule.required().error("Debes ingresar la descripción del contenido")
         }),
     ],
 

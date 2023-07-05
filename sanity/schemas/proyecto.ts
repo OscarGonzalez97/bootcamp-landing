@@ -9,11 +9,13 @@ export default defineType({
             name: 'titulo',
             title: 'Titulo',
             type: 'string',
+            validation: Rule => Rule.required().error("Debes ingresar el titulo del proyecto")
         }),
         defineField({
             name: 'descripcion',
             title: 'Descripcion',
             type: 'text',
+            validation: Rule => Rule.required().warning("Idealmente los proyectos tienen una descripción")
         }),
         defineField({
             name: 'imagen',

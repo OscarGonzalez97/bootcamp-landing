@@ -9,17 +9,20 @@ export default defineType({
       name: 'titulo',
       title: 'Titulo',
       type: 'string',
+      validation: Rule => Rule.required().error("Debes ingresar el titulo del módulo")
     }),
     defineField({
         name: 'duracion',
         title: 'Duración aprox.',
         type: 'number',
+        validation: Rule => Rule.warning().error("Los modulos deberian tener una duración aproximada")
     }),
     defineField({
       name: 'contenidos',
       title: 'Contenidos',
       type: 'array',
       of: [{type: 'reference', to: {type: 'contenido'}}],
+      validation: Rule => Rule.warning().error("Los modulos deberian tener al menos un contenido")
     }),
   ],
 
