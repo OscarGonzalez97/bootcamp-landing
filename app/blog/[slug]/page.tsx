@@ -59,7 +59,7 @@ export default function Page({ params }: Props) {
         blog.map((item: IBlog, index: number) => (
           <Card
             key={index}
-            className="text-foreground  border-none  bg-background mb-5 break-words max-w-[80vw] lg:max-w-3xl"
+            className="text-foreground  border-none w-[80vw] bg-background mb-5 break-words lg:max-w-3xl"
           >
             <CardHeader>
             
