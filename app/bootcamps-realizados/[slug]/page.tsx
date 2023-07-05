@@ -20,6 +20,7 @@ const Page = ({ params }: parametros) => {
 
     const slug = params.slug;
 
+    const emptyImageUrl = "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
     const [bootcampDetail, setBootcampDetail] = useState<IBootcampRealizado | null>(null)
     const [isLoading, setIsLoading] = useState(true);
 
@@ -51,7 +52,10 @@ const Page = ({ params }: parametros) => {
                 {/* Detalle bootcampDetail */}
                 <div className='text-foreground grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 '>
                     <div className=''>
-                        {bootcampDetail.imagen?.asset?.url && <Image className='object-cover w-full h-auto object-top rounded-xl' src={bootcampDetail.imagen?.asset?.url} alt={bootcampDetail.curso.titulo} width={1000} height={1000}></Image>}
+                        {bootcampDetail.imagen?.asset?.url 
+                        ? <Image className='object-cover w-full h-auto object-top rounded-xl' src={bootcampDetail.imagen?.asset?.url} alt={bootcampDetail.curso.titulo} width={1000} height={1000}></Image>
+                        : <Image className='object-cover w-full h-auto object-top rounded-xl' src={emptyImageUrl} alt={bootcampDetail.curso.titulo} width={1000} height={1000}></Image>
+                    }
                     </div>
                     <div>
                         <h2 className="text-2xl sm:text-5xl font-bold text-foreground ">{bootcampDetail.curso.titulo}</h2>
