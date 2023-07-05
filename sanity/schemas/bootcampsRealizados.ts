@@ -10,22 +10,26 @@ export default defineType({
             name: 'fechaDesde',
             title: 'Fecha Desde',
             type: 'date',
+            validation: Rule => Rule.required().error("Debes ingresar la fecha de inicio")
         }),
         defineField({
             name: 'fechaHasta',
             title: 'Fecha Hasta',
             type: 'date',
+            validation: Rule => Rule.required().error("Debes ingresar la fecha de fin")
         }),
         defineField({
             name: 'curso',
             title: 'Curso',
-            type: 'curso',
+            type: 'reference',
+            to: [{ type: 'curso' }],
+            validation: Rule => Rule.required().error("Debes seleccionar un curso")
         }),
         defineField({
             name: 'imagen',
             title: 'Imagen',
             type: 'image',
-            options:{
+            options: {
                 hotspot: true
             }
         }),
@@ -33,13 +37,13 @@ export default defineType({
             name: 'proyectos',
             title: 'Proyectos',
             type: 'array',
-            of: [{type: 'reference', to: {type: 'proyecto'}}],
-          }),
+            of: [{ type: 'reference', to: { type: 'proyecto' } }],
+        }),
     ],
     preview: {
         select: {
             title: 'curso.titulo',
-            subtitle:'descripcion',
+            subtitle: 'fechaDesde',
         },
     },
 })
