@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'curso',
@@ -11,10 +11,10 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-        name: 'descripcion',
-        title: 'Descripcion',
-        type: 'text',
-      }),
+      name: 'descripcion',
+      title: 'Descripcion',
+      type: 'text',
+    }),
     defineField({
       name: 'slug',
       title: 'Slug/URL',
@@ -25,18 +25,18 @@ export default defineType({
       },
     }),
     defineField({
-        name: 'imagen',
-        title: 'Imagen',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
+      name: 'imagen',
+      title: 'Imagen',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'modulos',
       title: 'Modulos',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'modulo'}}],
+      of: [{ type: 'reference', to: { type: 'modulo' } }],
     }),
     defineField({
       name: 'publishedAt',
