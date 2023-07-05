@@ -48,7 +48,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="container grid gap-5 lg:px-52">
+    <div className="container grid gap-5 lg:px-52 place-content-center">
       <h1 className="text-2xl sm:text-5xl font-bold text-foreground text-center mt-5">
         Blogs
       </h1>
@@ -64,7 +64,7 @@ const Page = () => {
         blogData.map((item: IBlog, index: number) => (
           <Card
             key={index}
-            className="text-foreground text-center border-none bg-muted mb-5"
+            className="text-foreground text-center border-none bg-muted mb-5 max-w-[80vw] lg:max-w-3xl"
           >
             <CardHeader>
             {(() => {
@@ -96,7 +96,7 @@ const Page = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-            <p className='px-10 pb-5'>{item.excerpt}</p>
+            <p className='px-10 pb-5 break-words'>{item.excerpt}</p>
               
               {item.autor.map(
                 (
