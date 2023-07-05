@@ -12,13 +12,19 @@ import {
 import Image from "next/image";
 import { CalendarDays } from "lucide-react";
 import Link from "next/link";
-import { fetchAllBootcampRealizado } from "@/services/querysBootcampsRealizados";
-import { IBootcampRealizado, IBlog } from "@/helpers/types";
+import { IBlog } from "@/helpers/types";
 import Loader from "@/components/Loader";
 import { showFormattedDate } from "@/helpers/utility";
 import { fetchAllBlog } from "@/services/querys";
-import Portable from "@/components/PortableText";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import urlBuilder from '@sanity/image-url';
+
+const urlFor = (source :any ) => {
+  return urlBuilder({
+    projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID!,
+    dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET!,
+  }).image(source);
+};
 
 const Page = () => {
   const [blogData, setBlogData] = useState<IBlog[] | null>(null);
@@ -28,8 +34,8 @@ const Page = () => {
     const fetchBlogsData = async () => {
       try {
         const data = await fetchAllBlog();
-        console.log("@@@", data?.allBlog?.contentRaw);
-        console.log(data);
+        // console.log("@@@", data?.allBlog?.contentRaw);
+        // console.log(data);
 
         setBlogData(data?.allBlog || []);
       } catch (error) {
@@ -61,7 +67,26 @@ const Page = () => {
             className="text-foreground text-center border-none bg-muted mb-5"
           >
             <CardHeader>
-            
+              {
+                (() => {
+                  let jsxElements: JSX.Element[] = [];
+                  item.contentRaw.some((content: any, index: number) => {
+                    if (content._type === 'image') {
+                      jsxElements.push(
+                        <Link key={index} href={`/blog/${item.slug.current}`} className='h-80 bg-primary'> 
+                        <div className="object-cover object-top w-full h-full bg-red-400">
+                          <Image className='object-cover object-top w-full h-full' src={urlFor(content.asset._ref).url()} alt={content.alt} width={1000} height={1000}></Image>
+                        </div>
+                        </Link>
+                      );
+                      return true; // Exit the iteration after finding the first image
+                    }
+                    return false;
+                  });
+                  return jsxElements;
+                })()
+              }
+
               <CardTitle className="text-3xl pt-3 font-bold">
                 {item.title}
                 
@@ -73,6 +98,8 @@ const Page = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
+            <p className='px-10 pb-5'>{item.excerpt}</p>
+              
               {item.autor.map(
                 (
                   autor: {
