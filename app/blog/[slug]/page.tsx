@@ -94,7 +94,7 @@ export default function Page({ params }: Props) {
                   return (
                     <div
                       key={index}
-                      className="flex gap-12 "
+                      className="flex gap-12 text-accent"
                     >
                       <div>
                         
