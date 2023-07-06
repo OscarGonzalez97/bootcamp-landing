@@ -29,6 +29,7 @@ export default function Page({ params }: Props) {
 
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchBlogsData = async () => {
       try {
         const data = await fetchBlogBySlug(slug);
