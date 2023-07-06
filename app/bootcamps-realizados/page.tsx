@@ -45,7 +45,7 @@ const Page = () => {
                     <CardHeader >
                         <Link href={`/bootcamps-realizados/${item._id}`} className='h-80 ' style={{background:'#cbcbcb'}}>
                             {item.imagen?.asset?.url
-                                ? <Image className='object-cover hover:object-contain w-full bg-muted  h-full aspect-square transition-transform duration-300 transform-gpu ' src={item.imagen.asset.url} alt={item.curso.titulo} width={1000} height={1000}></Image>
+                                ? <Image className='object-cover hover:object-contain focus:object-contain w-full bg-muted  h-full aspect-square transition-transform duration-300 transform-gpu ' src={item.imagen.asset.url} alt={item.curso.titulo} width={1000} height={1000}></Image>
                                 : <Image className='object-contain w-full h-full' src={emptyImageUrl} alt={item.curso.titulo} width={1000} height={1000}></Image>
                             }
                         </Link>
