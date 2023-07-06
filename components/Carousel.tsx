@@ -63,12 +63,20 @@ const CarouselPictures = (data: any) => {
   if (reportData != null) {
     return (
       <div className='w-[87vw] md:w-[85vw] lg:w-[89vw]  xl:w-[98vw] xl:container xl:px-20  p-5 '>
+        
+          <div className='flex justify-center md:justify-start'>
+            <h2 className="text-2xl sm:text-3xl text-foreground px-3">
+              <span>Bootcamps anteriores</span>
+              <hr className='mt-2 mb-5 border-accent' />
+            </h2>
+          </div>
+        
         <swiper-container
           ref={swiperElRef}
-       
+
           slides-per-view={dimensions < 770 ? 1 : dimensions < 1385 ? 2 : 3}
           navigation={true}
-      
+
           autoplay={true}
         >
           {reportData.map((item: Item, index: number) => {
@@ -87,7 +95,7 @@ const CarouselPictures = (data: any) => {
       </div>
     );
   } else {
-    return <div className='w-screen'><Loader/></div>;
+    return <div className='w-screen'><Loader /></div>;
   }
 };
 
