@@ -87,8 +87,9 @@ const Page = () => {
             })()}
 
               <CardTitle className="text-3xl pt-3 font-bold">
-                {item.title}
-                
+                <Link key={index} href={`/blog/${item.slug.current}`} className='h-80'> 
+                  {item.title}
+                </Link>  
                 <hr className="my-3 border-accent" />
               </CardTitle>
               <CardDescription className="flex items-center justify-center">
