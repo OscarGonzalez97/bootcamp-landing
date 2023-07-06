@@ -17,7 +17,7 @@ export default defineType({
       type: 'text',
       validation: Rule => [
         Rule.required().error("Debes ingresar la descripción del curso"),
-        Rule.max(350).error('La descripción puede tener máximo 350 caracteres')
+        // Rule.max(350).error('La descripción puede tener máximo 350 caracteres')
       ]
     }),
     defineField({

@@ -23,7 +23,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: Rule => Rule.warning().error("Idealmente el autor debe tener una imagen")
+      validation: Rule => Rule.required().warning("Idealmente el autor debe tener una imagen")
     }),
   ],
 

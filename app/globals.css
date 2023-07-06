@@ -95,3 +95,13 @@
 .textoDesc{
   width: clamp(45ch, 50%, 75ch);
 }
+
+.texto-ellipsis{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  /* // Addition lines for 2 line or multiline ellipsis */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}

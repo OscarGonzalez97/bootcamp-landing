@@ -15,14 +15,14 @@ export default defineType({
         name: 'duracion',
         title: 'Duración aprox.',
         type: 'number',
-        validation: Rule => Rule.warning().error("Los modulos deberian tener una duración aproximada")
+        validation: Rule => Rule.required().warning("Los modulos deberian tener una duración aproximada")
     }),
     defineField({
       name: 'contenidos',
       title: 'Contenidos',
       type: 'array',
       of: [{type: 'reference', to: {type: 'contenido'}}],
-      validation: Rule => Rule.warning().error("Los modulos deberian tener al menos un contenido")
+      validation: Rule => Rule.required().warning("Los modulos deberian tener al menos un contenido")
     }),
   ],
 
