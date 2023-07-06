@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
@@ -85,7 +86,7 @@ export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
               <motion.div key={curso._id} initial={{ x: '100vw', opacity: 0 }}
                 animate={{ x: '0', opacity: 1 }}
                 transition={{ duration: 0.8, delay: offsetDelay * curso._id }}>
-                <Card key={curso._id} className="h-full md:h-full ">
+                <Card key={curso._id} className="h-full md:h-full cartas ">
                   <CardHeader className="h-1/4">
                     <div className="flex justify-start items-center">
                       <Avatar>
@@ -98,7 +99,10 @@ export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
                   </CardHeader>
                   <CardContent className="text-sm text-justify opacity-60 h-3/4 flex flex-col justify-between">
                     <span className="pb-10 md:mb-0 ">{curso.descripcion}</span>
-                    <motion.div
+                   
+                  </CardContent>
+                  <CardFooter className="text-sm text-justify opacity-60 h-3/4 ">
+                  <motion.div
                       whileHover="hover"
                       whileTap="hover"
                       className="flex"
@@ -129,7 +133,7 @@ export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
                         </Link>
                       }
                     </motion.div>
-                  </CardContent>
+                  </CardFooter>
                 </Card>
               </motion.div>
             ))}
