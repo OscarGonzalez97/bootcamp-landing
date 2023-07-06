@@ -13,7 +13,7 @@ import { showFormattedDate } from '@/helpers/utility'
 
 const Page = () => {
 
-    const emptyImageUrl = "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
+    const emptyImageUrl = "https://res.cloudinary.com/dhzoxdo6q/image/upload/bootcamp-landing/empty_photo.jpg"
     const [bootcampsData, setBootcampsData] = useState<IBootcampRealizado[] | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 

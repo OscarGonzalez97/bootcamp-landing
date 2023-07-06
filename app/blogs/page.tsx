@@ -29,6 +29,7 @@ const urlFor = (source :any ) => {
 const Page = () => {
   const [blogData, setBlogData] = useState<IBlog[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const emptyAutor = "https://res.cloudinary.com/dhzoxdo6q/image/upload/bootcamp-landing/empty-user.png"
 
   useEffect(() => {
     const fetchBlogsData = async () => {
@@ -112,7 +113,7 @@ const Page = () => {
                       className="flex flex-col justify-center items-center"
                     >
                       <Avatar>
-                        <AvatarImage src={autor.avatar.asset.url} />
+                        <AvatarImage src={autor.avatar?.asset?.url ? autor.avatar.asset.url : emptyAutor} />
                         <AvatarFallback>ICO</AvatarFallback>
                       </Avatar>
                       <span className="mt-1">{autor.nombre}</span>
