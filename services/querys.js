@@ -87,7 +87,7 @@ export const fetchAllBlog = async () => {
     const { data } = await client.query({
       query: gql`
         query {
-          allBlog(sort: [{_createdAt:DESC}]){
+          allBlog(sort: [{_createdAt:ASC}]){
             _id
             title
             publishedAt
