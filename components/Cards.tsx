@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
@@ -41,7 +42,7 @@ interface Curso {
 
 export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
 
-  
+
 
   const textMotion = {
     hover: {
@@ -98,6 +99,7 @@ export function Cards({ cursoData }: { cursoData: Curso[] | null }) {
                   </CardHeader>
                   <CardContent className="text-sm text-justify opacity-60 h-3/4 flex flex-col justify-between">
                     <span className="md:mb-10 texto-ellipsis">{curso.descripcion}</span>
+
                     <motion.div
                       whileHover="hover"
                       whileTap="hover"

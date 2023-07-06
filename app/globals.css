@@ -86,9 +86,11 @@
   
 }
 
-.carta{
-  grid-row: span 3 ;
-  grid-template-rows: subgrid;
+.cartas{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr; 
+ 
 } 
 .textoDesc{
   width: clamp(45ch, 50%, 75ch);

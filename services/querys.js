@@ -16,16 +16,15 @@ export const fetchAllCurso = async () => {
               current
             }
           }
-          allBootcampRealizado {
+          allBootcampRealizado(sort: [{fechaDesde:DESC}]){
             imagen {
               asset {
                 url
               }
             }
           }
-          
         }
-      `,
+        `,
     });
 
     return data;
@@ -87,28 +86,28 @@ export const fetchAllBlog = async () => {
   try {
     const { data } = await client.query({
       query: gql`
-      query {
-        allBlog {
-          _id
-          title
-          publishedAt
-          contentRaw
-          slug {
-            current
-          }
-         excerpt
-          autor {
-            nombre,
-            avatar {
-              asset{
-                url
+        query {
+          allBlog(sort: [{_createdAt:DESC}]){
+            _id
+            title
+            publishedAt
+            contentRaw
+            slug {
+              current
+            }
+            excerpt
+            autor {
+              nombre
+              avatar {
+                asset {
+                  url
+                }
               }
             }
           }
         }
-      }
-      `,
-    });
+        `,
+      });
 
     return data;
   } catch (error) {
@@ -127,8 +126,7 @@ export const fetchBlogBySlug = async (slug) => {
             title
             publishedAt
             contentRaw
-           
-     
+        
             autor {
               nombre
               avatar {
