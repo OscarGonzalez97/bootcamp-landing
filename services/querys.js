@@ -16,7 +16,7 @@ export const fetchAllCurso = async () => {
               current
             }
           }
-          allBootcampRealizado(sort: [{fechaDesde:DESC}]){
+          allBootcampRealizado{
             imagen {
               asset {
                 url
