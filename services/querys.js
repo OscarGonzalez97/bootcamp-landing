@@ -57,6 +57,7 @@ export const fetchCursoBySlug = async (slug) => {
             modulos {
               _id
               titulo
+              duracion
               contenidos {
                 _id
                 descripcion
