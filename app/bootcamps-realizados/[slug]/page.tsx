@@ -28,7 +28,7 @@ const Page = ({ params }: parametros) => {
         const fetchCursoData = async () => {
             try {
                 const data = await fetchBootcampRealizadoBySlug(slug);
-                console.log(data)
+                // console.log(data)
                 setBootcampDetail(data?.BootcampRealizado);
             } catch (error) {
                 console.error("Error fetching bootcampDetail realizado by slug:", error);

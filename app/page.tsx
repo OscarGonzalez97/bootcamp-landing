@@ -42,7 +42,7 @@ export default function Home() {
         setCursoData(data?.allCurso || []);
         setCarouselData(data?.allBootcampRealizado || []);
         setLoadingCarouselData(false);
-        console.log(data)
+        // console.log(data)
       } catch (error) {
         console.error("Error fetching curso data:", error);
       } finally {
