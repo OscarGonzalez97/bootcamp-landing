@@ -59,10 +59,10 @@ export default function Home({ params }: Props) {
                 <hr className='border-accent' />
                 <p className="text-xl ">{curso.descripcion}</p>
               </div>
-              <div className="w-full flex flex-col gap-4 justify-center items-center border-2 border-secondary-foreground rounded-lg p-4">
+              {curso.modulos && <div className="w-full flex flex-col gap-4 justify-center items-center border-2 border-secondary-foreground rounded-lg p-4">
                 <h1 className="self-start text-xl font-bold">Modulos</h1>
                 <AccordionBtc modulos={curso.modulos} />
-              </div>
+              </div>}
             </>
           }
         </div>

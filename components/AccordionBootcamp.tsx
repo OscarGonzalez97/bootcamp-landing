@@ -21,20 +21,28 @@ export function AccordionBtc({ modulos }: AccordionBtcProps) {
           <AccordionTrigger className="rounded-xl text-xl sm:text-2xl  hover:no-underline px-5">
             {modulo.titulo}
           </AccordionTrigger>
-          <AccordionContent className="bg-muted-dark border-muted border-2 border-t-0 rounded-b-xl">
-            <div className="grid gap-5 p-5 text-xl">
-              {/* Duración */}
-              <p className="font-bold underline underline-offset-8 decoration-accent">Duración:</p>
-              <p className="text-foreground text-lg text-gray-300">{modulo.duracion} horas</p>
-              {/* Contenidos */}
-              <p className="font-bold underline underline-offset-8 decoration-accent">Contenidos:</p>
-              <ul>
-                {modulo.contenidos && modulo.contenidos.map((contenido, index) => (
-                  <li key={index}>{contenido.descripcion}</li>
-                ))}
-              </ul>
-            </div>
-          </AccordionContent>
+          {(modulo.contenidos && modulo.duracion) &&
+            <AccordionContent className="bg-muted-dark border-muted border-2 border-t-0 rounded-b-xl">
+              <div className="grid gap-5 p-5 text-xl">
+                {/* Duración */}
+                {modulo.duracion &&
+                  <>
+                    <p className="font-bold underline underline-offset-8 decoration-accent">Duración:</p>
+                    <p className="text-foreground text-lg text-gray-300">{modulo.duracion} horas</p>
+                  </>
+                }
+                {/* Contenidos */}
+                {modulo.contenidos &&
+                  <>
+                    <p className="font-bold underline underline-offset-8 decoration-accent">Contenidos:</p>
+                    <ul>
+                      {modulo.contenidos.map((contenido, index) => (
+                        <li key={index}>{contenido.descripcion}</li>
+                      ))}
+                    </ul>
+                  </>}
+              </div>
+            </AccordionContent>}
         </AccordionItem>
       ))}
     </Accordion>
