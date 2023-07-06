@@ -107,3 +107,7 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
+
+.texto-ellipsis-4{
+  -webkit-line-clamp: 4;
+}

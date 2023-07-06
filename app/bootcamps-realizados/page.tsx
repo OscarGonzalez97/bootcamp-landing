@@ -59,7 +59,7 @@ const Page = () => {
                     </CardHeader>
                     <CardContent >
 
-                        <p className='px-10'>{item.curso.descripcion}</p>
+                        <p className='px-10 texto-ellipsis texto-ellipsis-4'>{item.curso.descripcion}</p>
 
                     </CardContent>
                     <CardFooter className='flex justify-center'>
