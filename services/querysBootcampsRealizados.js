@@ -6,7 +6,7 @@ export const fetchAllBootcampRealizado = async () => {
     const { data } = await client.query({
       query: gql`
         query {
-          allBootcampRealizado {
+          allBootcampRealizado (sort: [{fechaDesde:DESC}]){
             _id
             fechaDesde
             fechaHasta
